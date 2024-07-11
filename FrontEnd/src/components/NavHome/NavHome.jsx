@@ -1,7 +1,7 @@
 import './NavHome.css';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../Helpers/RoutesPath';
-import logo from '../../img/Logo x1.png';
+import logo from '../../img/Logox1.png';
 
 
 
