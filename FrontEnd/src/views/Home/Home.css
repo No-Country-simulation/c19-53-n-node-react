@@ -1,3 +1,30 @@
-h2{
-    background-color: rgb(220, 8, 8);
+
+.div-container{
+    background-color: rgb(255, 255, 255);
+    width: 20vw;
+    position: absolute;
+    top: 50%;
+    left: 40%;
 }
+
+.btn-start{
+    width: 12vw;
+    background-color: #4F378B;
+    background-color: #4F378B;
+    color: white;
+    font-weight:normal;
+    padding-top: 0.5rem; 
+    padding-bottom: 0.5rem;
+    padding-left: 1rem; 
+    padding-right: 1rem;
+    border-radius: 9999px;
+    margin-bottom: 1vw;
+}
+
+.icon-home-card {
+    font-size: 4rem;
+    color: #1D0E43;
+}
+
+
+  
