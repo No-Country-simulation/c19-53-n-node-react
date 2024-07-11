@@ -1,0 +1,35 @@
+
+
+
+.nav_container {
+    width:90vw;
+    height:55px ;
+    background: #E9CBF7; 
+    display:flex ;
+    align-items:center ;
+    justify-content:space-around;
+    top:0 ;
+    left: 5%;
+    position:fixed ;
+    z-index:2 ;
+    margin: 0px ;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    
+}
+
+.btn-nav-home {
+    width: 12vw;
+    background-color: #4F378B;
+    background-color: #4F378B;
+    color: white;
+    font-weight:normal;
+    padding-top: 0.5rem; /* 2 unidades de Tailwind equivalen a 0.5rem */
+    padding-bottom: 0.5rem;
+    padding-left: 1rem; /* 4 unidades de Tailwind equivalen a 1rem */
+    padding-right: 1rem;
+    border-radius: 9999px;
+    margin-right: 10rem;
+}
+
+
