@@ -1,9 +1,7 @@
-
-
 import "./NavLanding.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../Helpers/RoutesPath";
-import logo from "../../Img/Logox1.png";
+// import logo from "../../Img/Logox1.png";
 
 function NavHome() {
   return (
@@ -15,7 +13,7 @@ function NavHome() {
               href="/"
               className=" mb-2 col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
             >
-              <img src={logo} width="200px" alt="logo" />
+              {/* <img src={logo} width="200px" alt="logo" /> */}
             </a>
             <ul className="nav col-md-4 justify-content-end mb-2">
               <Link
