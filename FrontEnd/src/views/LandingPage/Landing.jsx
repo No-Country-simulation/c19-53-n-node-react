@@ -1,16 +1,16 @@
 
-import './Home.css';
-import NavHome from '../../components/NavHome/NavHome'
+import './Landing.css';
+import NavLanding from '../../components/NavLanding/NavLanding'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../../Helpers/RoutesPath'
 import { HiOutlineBanknotes } from 'react-icons/hi2';
 
-function Home() {
+function LandingPage() {
 
     return (
         <div>
             <div>
-                <NavHome />
+                <NavLanding />
             </div>
             <div className="cta-area ">
                 <div className="div-container">
@@ -26,4 +26,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default LandingPage;
