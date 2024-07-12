@@ -3,7 +3,7 @@
 import "./NavLanding.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../Helpers/RoutesPath";
-import logo from "../../img/Logox1.png";
+import logo from "../../Img/Logox1.png";
 
 function NavHome() {
   return (
