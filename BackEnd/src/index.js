@@ -1,13 +1,14 @@
-const express = require('express');
 require('dotenv').config();
+const express = require('express');
+
+const routes = require('./routes/usersRoutes.js');
+const server = express();
+require("./db/dbConnection.js")
+
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-
-const routes = require('./routes/usersRoutes.js');
-const server = express();
-
 server.name = 'API';
 
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
@@ -17,7 +18,7 @@ server.use(morgan('dev'));
 server.use(cors({
   origin: ['http://localhost:3000', '*'],
   credentials: true,
-  methods: ['GET', 'POST', 'PATCH','OPTIONS', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PATCH', 'OPTIONS', 'PUT', 'DELETE'],
 }));
 
 server.use('/', routes);
