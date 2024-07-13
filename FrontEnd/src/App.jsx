@@ -1,6 +1,6 @@
 import { ROUTES } from "./Helpers/RoutesPath";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LandingPage from './views/LandingPage/Landing'
+import LandingPage from "./views/LandingPage/Landing";
 import CreateAccount from "./views/Registration/CreateAccount";
 
 function App() {

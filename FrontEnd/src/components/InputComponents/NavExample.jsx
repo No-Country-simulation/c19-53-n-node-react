@@ -1,3 +1,5 @@
 export default function NavExample() {
-  return <div className="h-20 bg-violet-300 m-2 rounded-lg bg-viole"></div>;
+  return (
+    <div className="h-20 w-full bg-violet-300 rounded-lg mt-2 ml-2 "></div>
+  );
 }
