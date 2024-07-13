@@ -5,12 +5,15 @@ import TermsAgree from "../../components/InputComponents/TermsAgree";
 import { JoinUs } from "../../assets/svg/JoinUs";
 import NavExample from "../../components/InputComponents/NavExample";
 import FooterExample from "../../components/InputComponents/FooterExample";
+import { Logo } from "../../assets/svg/Logo";
+import { Logo2 } from "../../assets/svg/Logo2";
 
 export default function CreateAccount() {
   return (
     <div className="flex flex-col justify-center items-center">
       <NavExample />
-
+      <Logo width={"150"} />
+      <Logo2 width={"150"} />
       <div className="mt-10 bt-10 lg:mt-2 flex flex-col lg:flex-row justify-center items-center gap-10 p-2">
         <div className="flex flex-col gap-9">
           <div className="flex flex-col gap-8 p-3 items-center">
@@ -50,7 +53,6 @@ export default function CreateAccount() {
           />
           <TermsAgree />
           <ConfirmationButton name={"Confirmar"} />
-
         </div>
       </div>
       <FooterExample />
