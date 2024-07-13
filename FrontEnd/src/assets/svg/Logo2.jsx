@@ -1,4 +1,4 @@
-export const Logo2 = ({ width, height }) => {
+export default function Logo2({ width, height }) {
   return (
     <svg
       version="1.0"
@@ -102,4 +102,4 @@ export const Logo2 = ({ width, height }) => {
       </g>
     </svg>
   );
-};
+}
