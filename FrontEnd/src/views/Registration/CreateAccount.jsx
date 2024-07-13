@@ -10,6 +10,7 @@ export default function CreateAccount() {
   return (
     <div className="flex flex-col justify-center items-center">
       <NavExample />
+
       <div className="mt-10 bt-10 lg:mt-2 flex flex-col lg:flex-row justify-center items-center gap-10 p-2">
         <div className="flex flex-col gap-9">
           <div className="flex flex-col gap-8 p-3 items-center">
@@ -49,6 +50,7 @@ export default function CreateAccount() {
           />
           <TermsAgree />
           <ConfirmationButton name={"Confirmar"} />
+
         </div>
       </div>
       <FooterExample />
