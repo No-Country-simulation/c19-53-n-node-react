@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../../Helpers/RoutesPath";
 import ConfirmationButton from '../../components/InputComponents/ConfirmationButton'
 import Logo from "../../assets/svg/Logo";
+import Logo2 from '../../assets/svg/Logo2'
 
 
 function NavLanding() {
@@ -27,7 +28,7 @@ function NavLanding() {
       <div>
 
         <a href="/" className="md:hidden flex flex-col justify-end items-center ">
-          <Logo width={"150"} />
+          <Logo2 width={"120"} />
         </a>
         <div className='md:hidden flex flex-col space-y-2 p-4  items-center '>
 
