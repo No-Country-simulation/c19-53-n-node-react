@@ -2,37 +2,46 @@ import "./NavLanding.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../Helpers/RoutesPath";
 import ConfirmationButton from '../../components/InputComponents/ConfirmationButton'
-// import logo from "../../Img/Logox1.png";
+import Logo from "../../assets/svg/Logo";
 
 
 function NavLanding() {
+
+
   return (
-    <header>
-      <nav>
-        <div >
-          <div className="h-20 bg-violet-300 m-2 rounded-lg flex items-center justify-end ">
-            <a
-              href="/"
-              className=" mb-2 col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-            >
-              {/* <img src={logo} width="200px" alt="logo" /> */}
-            </a>
-            <div className="flex space-x-20 justify-end items-center w-full p-60">
-              <Link
-                to={ROUTES.LOGIN}
-              >
-                <ConfirmationButton name={'Iniciar Sesión'} />
-              </Link>
-              <Link
-                to={ROUTES.CREATEACCOUNT}
-              >
-                <ConfirmationButton name={'Crear cuenta'} />
-              </Link>
-            </div>
-          </div>
+    <header className="bg-violet-300 m-2 rounded-lg">
+      <nav className="flex items-center justify-between h-20 px-4">
+        <a href="/" className=" hidden md:flex flex flex-col items-center">
+          <Logo width={"150"} />
+        </a>
+        <div className="hidden md:flex space-x-4">
+          <Link to={ROUTES.LOGIN}>
+            <ConfirmationButton name={'Iniciar Sesión'} />
+          </Link>
+          <Link to={ROUTES.CREATEACCOUNT}>
+            <ConfirmationButton name={'Crear cuenta'} />
+          </Link>
         </div>
       </nav>
+
+      <div>
+
+        <a href="/" className="md:hidden flex flex-col justify-end items-center ">
+          <Logo width={"150"} />
+        </a>
+        <div className='md:hidden flex flex-col space-y-2 p-4  items-center '>
+
+          <Link to={ROUTES.LOGIN}>
+            <ConfirmationButton name={'Iniciar Sesión'} />
+          </Link>
+          <Link to={ROUTES.CREATEACCOUNT}>
+            <ConfirmationButton name={'Crear cuenta'} />
+          </Link>
+        </div>
+      </div>
     </header>
+
+
   );
 }
 
