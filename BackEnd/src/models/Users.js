@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['Empleado', 'Empresa', 'Administrador'],
+        enum: ['empleado', 'empresa', 'administrador'],
         required: true 
       },
     balance: { 
