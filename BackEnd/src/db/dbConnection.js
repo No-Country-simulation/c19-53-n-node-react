@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const dbUrl = 'mongodb://127.0.0.1:27017/JustPay';
+const dbUrl = 'mongodb://localhost:27017/JustPay';
 
 const connectDB = async () => {
   try {
     await mongoose.connect(dbUrl);
-    console.log("Conectado a Mongo");
+    console.log(`Conectado a Mongo URL: ${dbUrl}`);
   } catch (error) {
     console.log(error);
   }
