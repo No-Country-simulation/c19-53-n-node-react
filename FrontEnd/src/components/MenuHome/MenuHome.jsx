@@ -9,6 +9,7 @@ import { MdOutlineAttachMoney } from "react-icons/md";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { FiUser } from "react-icons/fi";
 import { IoIosArrowForward } from "react-icons/io";
+import { FaListCheck } from "react-icons/fa6";
 
 function MenuHome() {
     const location = useLocation();
@@ -60,6 +61,12 @@ function MenuHome() {
                 >
                 <FaMoneyBillTransfer className="mr-5"/>
                     <span>Transferir dinero</span>
+                    </Link>
+                    <Link to='/employees' className={`flex items-center mt-5 block py-2 px-4 text-white hover:bg-indigo-500 ${active === '/employees' && 'bg-indigo-700'}`}
+                onClick={() => handleActive('/employees')}
+                >
+                <FaListCheck className="mr-5"/>
+                    <span>Lista de empleados</span>
                     </Link>
             </nav>
             </div>
