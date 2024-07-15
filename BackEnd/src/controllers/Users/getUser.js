@@ -1,7 +1,7 @@
 const User = require("../../models/Users");
 
 const getUser = async (req, res) => {
-    const { document } = req.query
+    const { document } = req.params
 
     try {
 

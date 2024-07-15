@@ -10,7 +10,7 @@ const updateUser = require('../controllers/Users/updateUser');
 const router = Router();
 
 router.post("/users", postUsers);
-router.get("/users/:id", getUser);
+router.get("/users/:document", getUser);
 router.get("/users", getAllUsers);
 //router.put("user/id", updateUser);
 //router.delete("/users/:id", deleteUser);
