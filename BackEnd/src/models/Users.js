@@ -19,7 +19,12 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
-    saldo: { 
+    role: {
+        type: String,
+        enum: ['empleado', 'empresa', 'administrador'],
+        required: true 
+      },
+    balance: { 
         type: Number, 
         default: 0 
     },

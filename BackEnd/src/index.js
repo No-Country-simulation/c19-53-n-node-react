@@ -5,6 +5,7 @@ const routes = require('./routes/usersRoutes.js');
 const server = express();
 require("./db/dbConnection.js")
 
+// Middlewares
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -28,6 +29,15 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   const message = err.message || err;
   console.error(err);
   res.status(status).send(message);
+});
+
+const connectDB = require("../src/db/dbConnection");
+const { PORT } = process.env;
+
+connectDB();
+
+server.listen(PORT, () => {
+    console.log(`Conectado a PORT: ${PORT}`);
 });
 
 module.exports = server;
