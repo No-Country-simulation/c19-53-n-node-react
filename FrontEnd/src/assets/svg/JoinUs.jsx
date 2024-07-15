@@ -1,4 +1,4 @@
-export const JoinUs = ({ width, height }) => {
+export default function JoinUs({ width, height }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -216,4 +216,4 @@ export const JoinUs = ({ width, height }) => {
       />
     </svg>
   );
-};
+}

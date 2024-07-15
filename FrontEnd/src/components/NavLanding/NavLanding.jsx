@@ -1,39 +1,51 @@
 import "./NavLanding.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../Helpers/RoutesPath";
-// import logo from "../../Img/Logox1.png";
+import ConfirmationButton from '../../components/InputComponents/ConfirmationButton'
+import Logo from "../../assets/svg/Logo";
+import Logo2 from '../../assets/svg/Logo2'
 
-function NavHome() {
+
+function NavLanding() {
+
+
   return (
-    <header>
-      <nav>
-        <div>
-          <div className="nav_container">
-            <a
-              href="/"
-              className=" mb-2 col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-            >
-              {/* <img src={logo} width="200px" alt="logo" /> */}
-            </a>
-            <ul className="nav col-md-4 justify-content-end mb-2">
-              <Link
-                className="nav-link px-2 text-body-primary"
-                to={ROUTES.LOGIN}
-              >
-                <button className="btn-nav-home">Iniciar Sesión</button>
-              </Link>
-              <Link
-                className="nav-link px-2 text-body-primary"
-                to={ROUTES.CREATEACCOUNT}
-              >
-                <button className="btn-nav-home">Crear cuenta</button>
-              </Link>
-            </ul>
-          </div>
+    <header className="bg-violet-300 m-0 rounded-lg">
+      <nav className="flex items-center justify-between h-20 px-4">
+        <a href="/" className=" hidden md:flex flex flex-col p-1">
+          <Logo width={"100"} />
+        </a>
+        <div className="hidden md:flex space-x-4">
+          <Link to={ROUTES.LOGIN}>
+            <ConfirmationButton name={'Iniciar Sesión'} />
+          </Link>
+          <Link to={ROUTES.CREATEACCOUNT}>
+            <ConfirmationButton name={'Crear cuenta'} />
+          </Link>
         </div>
       </nav>
+
+      <div>
+
+        <a href="/" className="md:hidden flex flex-col justify-end items-center ">
+          <Logo2 width={"120"} />
+        </a>
+        <div className='md:hidden flex flex-col space-y-2 p-4  items-center '>
+
+          <Link to={ROUTES.LOGIN}>
+            <ConfirmationButton name={'Iniciar Sesión'} />
+          </Link>
+          <Link to={ROUTES.CREATEACCOUNT}>
+            <ConfirmationButton name={'Crear cuenta'} />
+          </Link>
+        </div>
+      </div>
     </header>
+
+
   );
 }
 
-export default NavHome;
+export default NavLanding;
+
+

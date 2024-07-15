@@ -2,29 +2,32 @@ import React from "react";
 import { TextInput } from "../../components/InputComponents/TextInput";
 import ConfirmationButton from "../../components/InputComponents/ConfirmationButton";
 import TermsAgree from "../../components/InputComponents/TermsAgree";
-import { JoinUs } from "../../assets/svg/JoinUs";
+import JoinUs from "../../assets/svg/JoinUs";
 import NavExample from "../../components/InputComponents/NavExample";
-import FooterExample from "../../components/InputComponents/FooterExample";
+import Footer from "../../components/Footer";
 
 export default function CreateAccount() {
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <NavExample />
-      <div className="flex w-auto items-center">
-        <div className="mt-10 mb-10 sm:mx-auto sm:w-full sm:max-w-lg  flex flex-col gap-10 items-center">
-          <div className="flex flex-col items-center justify-center text-center gap-8">
-            <h1 className="text-lg font-medium leading-6 text-gray-900">
+
+      <div className="mt-10 bt-10 lg:mt-2 flex flex-col lg:flex-row justify-center items-center gap-10 p-2">
+        <div className="flex flex-col gap-9">
+          <div className="flex flex-col gap-8 p-3 items-center">
+            <h1 className="text-3xl font-bold leading-6 text-center">
               UNETE A NUESTRA COMUNIDAD
             </h1>
-            <p>
+            <p className="text-center w-96">
               Completa este sencillo formulario y comienza a disfrutar de los
               beneficios de operar con nuestra aplicación
             </p>
           </div>
-          <JoinUs width={"500"} height={"400"} />
+          <div className="flex justify-center w-full">
+            <JoinUs height={"250"} />
+          </div>
         </div>
 
-        <div className="mt-10 mb-10 sm:mx-auto sm:w-full sm:max-w-lg  flex flex-col gap-6 items-center bg-slate-50 p-8 rounded-lg drop-shadow">
+        <div className="mt-10 mb-10 flex flex-col gap-6 items-center bg-slate-50 p-8 rounded-lg drop-shadow w-full sm:max-w-lg">
           <TextInput
             name={"Nombre"}
             description={"Ingrese el nombre de su organización"}
@@ -49,7 +52,7 @@ export default function CreateAccount() {
           <ConfirmationButton name={"Confirmar"} />
         </div>
       </div>
-      <FooterExample />
+      <Footer />
     </div>
   );
 }
