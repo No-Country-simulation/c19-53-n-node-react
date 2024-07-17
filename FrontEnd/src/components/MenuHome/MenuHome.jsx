@@ -20,6 +20,7 @@ function MenuHome() {
     }
 
     return(
+        
         <div className="bg-violet-500 h-screen w-52">
          {/* Botón de Usuario */}
          <div className="flex justify-center items-center py-4">
@@ -71,6 +72,7 @@ function MenuHome() {
             </nav>
             </div>
         </div>
+        
     )
 }
 

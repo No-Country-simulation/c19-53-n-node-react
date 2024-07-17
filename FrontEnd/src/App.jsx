@@ -2,7 +2,7 @@ import { ROUTES } from "./Helpers/RoutesPath";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./views/LandingPage/Landing";
 import CreateAccount from "./views/Registration/CreateAccount";
-import MenuHome from "./components/MenuHome/MenuHome"
+import Home from './views/Home/Home'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
             path={ROUTES.CREATEACCOUNT}
             element={<CreateAccount />}
           />
-          <Route exact path={ROUTES.HOME} element={<MenuHome />}/>
+          <Route exact path={ROUTES.HOME} element={<Home />}/>
         </Routes>
       </div>
     </BrowserRouter>
