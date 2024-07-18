@@ -37,7 +37,7 @@ const postUser = async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Error al crear usuario' ,details:error.message});
+        res.status(500).json({ error: 'Error al crear usuario' , details:error.message});
     }
 }
 module.exports = postUser
