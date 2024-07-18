@@ -1,24 +1,28 @@
-import './Home.css'
-import { Link } from 'react-router-dom'
-import MenuHome from '../../components/MenuHome/MenuHome'
-import Footer from '../../components/Footer'
-import NavExample from '../../components/InputComponents/NavExample'
+import './Home.css';
+import { Link } from 'react-router-dom';
+import MenuHome from '../../components/MenuHome/MenuHome';
+import Footer from '../../components/Footer';
+import NavExample from '../../components/InputComponents/NavExample';
+import MoneyButton from '../../components/InputComponents/MoneyButton'
 
 function Home() {
+    const availableAmount = '1.234.56';
+
     return (
-        <div>
+        <div className="home-container relative ">
             <NavExample />
-            <MenuHome  className='min-h-screen flex flex-col'/>
-            <div className="container">
-                <div className="link-container">
-                    <Link to='/banking' className='flex justify-center items-center w-full h-full'>
-                        <span>Dinero disponible</span>
+            <div className="content-wrapper">
+                <MenuHome />
+                <div className="ml-96 mt-24 absolute ">
+                    <Link to='/banking' >
+                        <MoneyButton amount={availableAmount}/>
                     </Link>
+                    
                 </div>
             </div>
             <Footer />
         </div>
-    )
+    );
 }
 
 export default Home;

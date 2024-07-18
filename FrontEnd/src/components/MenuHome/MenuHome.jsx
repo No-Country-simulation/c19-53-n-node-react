@@ -21,7 +21,7 @@ function MenuHome() {
 
     return(
         
-        <div className="bg-violet-500 h-screen w-52">
+        <nav className="bg-violet-500 h-screen w-52">
          {/* Botón de Usuario */}
          <div className="flex justify-center items-center py-4">
                 <button className="flex items-center px-4 py-2 hover:bg-indigo-800 bg-indigo-900 text-white rounded-lg">
@@ -33,7 +33,7 @@ function MenuHome() {
             {/* Contenido del menú */}
             <div className="flex justify-center mt-0">
                 
-            <nav className="mt-5">
+            <ul className="mt-5">
                 <Link to='/home ' className={`flex items-center block py-2 px-4 text-white hover:bg-indigo-500 ${active === '/home' && 'bg-indigo-700'}`}
                 onClick={() => handleActive('/home')}>
                 <SlHome className="mr-5" /> 
@@ -69,9 +69,9 @@ function MenuHome() {
                 <FaListCheck className="mr-5"/>
                     <span>Lista de empleados</span>
                     </Link>
-            </nav>
+            </ul>
             </div>
-        </div>
+        </nav>
         
     )
 }
