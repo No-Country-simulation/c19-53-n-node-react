@@ -17,7 +17,7 @@ const getUser = async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        res.status(400).json({ error: 'Error al traer usuarios' });
+        res.status(500).json({ error: 'Error al recuperar usuarios' , details: error.message });
     }
 };
 

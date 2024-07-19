@@ -4,6 +4,7 @@ import LandingPage from "./views/LandingPage/Landing";
 import CreateAccount from "./views/Registration/CreateAccount";
 import Home from './views/Home/Home'
 import Login from "./views/LogIn/Login";
+import AdminHome from "./admin/AdminHome";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           />
           <Route exact path={ROUTES.HOME} element={<Home />} />
           <Route exact path={ROUTES.LOGIN} element={<Login />} />
+          <Route exact path={ROUTES.ADMIN} element={<AdminHome />} />
         </Routes>
       </div>
     </BrowserRouter>

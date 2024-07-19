@@ -1,12 +1,10 @@
 export default function JoinUs({ width, height }) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
       width={width}
       height={height}
       viewBox="0 0 955.95262 639.22428"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
     >
       <rect
         x="0.30042"
