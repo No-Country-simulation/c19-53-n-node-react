@@ -1,12 +1,21 @@
 import React from "react";
-import { TextInput } from "../../components/InputComponents/TextInput";
-import ConfirmationButton from "../../components/InputComponents/ConfirmationButton";
+import { registerRequest } from "../../api/auth";
+import { getUsers } from "../../api/auth";
+import { useState, useEffect } from "react";
+
 import TermsAgree from "../../components/InputComponents/TermsAgree";
 import JoinUs from "../../assets/svg/JoinUs";
 import NavExample from "../../components/InputComponents/NavExample";
 import Footer from "../../components/Footer";
+import { useForm } from "react-hook-form";
 
 export default function CreateAccount() {
+  const { register, handleSubmit } = useForm();
+
+  const fetchUsers = async () => {};
+  useEffect(() => {
+    fetchUsers();
+  }, []);
   return (
     <div className="flex flex-col justify-center items-center">
       <NavExample />
@@ -27,30 +36,91 @@ export default function CreateAccount() {
           </div>
         </div>
 
-        <div className="mt-10 mb-10 flex flex-col gap-6 items-center bg-slate-50 p-8 rounded-lg drop-shadow w-full sm:max-w-lg">
-          <TextInput
-            name={"Nombre"}
-            description={"Ingrese el nombre de su organización"}
-          />
-          <TextInput
-            name={"Email"}
-            description={"Ingrese su correo electrónico"}
-          />
-          <TextInput
-            name={"Numero de Identificación"}
-            description={"Ingrese su numero de identificacion"}
-          />
-          <TextInput
-            name={"Contraseña"}
-            description={"Ingrese su contraseña"}
-          />
-          <TextInput
-            name={"Confirmar Contraseña"}
-            description={"Confirme su contraseña"}
-          />
+        <form
+          onSubmit={handleSubmit(async () => {
+            const postUser = await registerRequest(values);
+            console.log("UserPosted:", postUser);
+          })}
+          className="mt-10 mb-10 flex flex-col gap-5 items-center bg-slate-50 p-8 rounded-lg drop-shadow w-full sm:max-w-lg"
+        >
+          <div>
+            <label className="block text-sm font-medium leading-6 text-gray-900">
+              Nombre
+            </label>
+            <div className="relative mt-2 rounded-md shadow-sm">
+              <input
+                type="text"
+                placeholder={"Ingrese el nombre de su organización"}
+                className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
+                {...register("name", { required: true })}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium leading-6 text-gray-900">
+              Email
+            </label>
+            <div className="relative mt-2 rounded-md shadow-sm">
+              <input
+                type="email"
+                placeholder={"Ingrese su correo electrónico"}
+                className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
+                {...register("email", { required: true })}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium leading-6 text-gray-900">
+              Numero de Identificación
+            </label>
+            <div className="relative mt-2 rounded-md shadow-sm">
+              <input
+                type="text"
+                placeholder={"Ingrese su numero de identificacion"}
+                className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
+                {...register("id", { required: true })}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium leading-6 text-gray-900">
+              Contraseña
+            </label>
+            <div className="relative mt-2 rounded-md shadow-sm">
+              <input
+                type="password"
+                placeholder={"Ingrese su contraseña"}
+                className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
+                {...register("password", { required: true })}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium leading-6 text-gray-900">
+              Confirmar Contraseña
+            </label>
+            <div className="relative mt-2 rounded-md shadow-sm">
+              <input
+                type="password"
+                placeholder={"Confirme su contraseña"}
+                className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
+                {...register("confirmPassword", { required: true })}
+              />
+            </div>
+          </div>
+
           <TermsAgree />
-          <ConfirmationButton name={"Confirmar"} />
-        </div>
+          <button
+            type="submit"
+            className="flex w-60 justify-center rounded-2xl bg-violet-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-violet-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Confirmar
+          </button>
+        </form>
       </div>
       <Footer />
     </div>

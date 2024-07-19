@@ -1,8 +1,8 @@
-export const EmailInput = ({ name, description }) => {
+export const EmailInput = ({ lab, description }) => {
   return (
     <div>
       <label className="block text-sm font-medium leading-6 text-gray-900">
-        {name}
+        {lab}
       </label>
       <div className="relative mt-2 rounded-md shadow-sm">
         <input
