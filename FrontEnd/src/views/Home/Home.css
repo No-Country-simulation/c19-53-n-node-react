@@ -1,17 +1,10 @@
-.container {
+.home-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
-.link-container {
+.content-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #38b2ac; /* bg-teal-400 */
-    width: 12rem; /* w-48 */
-    height: 10rem; /* h-40 */
-    margin-top: 20px;
+    flex: 1;
 }
