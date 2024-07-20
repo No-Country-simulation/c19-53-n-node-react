@@ -4,21 +4,31 @@ import MenuHome from '../../components/MenuHome/MenuHome';
 import Footer from '../../components/Footer';
 import NavExample from '../../components/InputComponents/NavExample';
 import MoneyButton from '../../components/InputComponents/MoneyButton'
+import { IoIosArrowForward } from "react-icons/io";
+import { format } from 'date-fns';
 
 
 function Home() {
     const availableAmount = '1.234.56';
     const transactions = [
-        { id: 1, date: '2024-07-15', description: 'Pago de nómina', amount: '500.00' },
-        { id: 2, date: '2024-07-14', description: 'Compra de suministros', amount: '200.00' },
-        { id: 3, date: '2024-07-14', description: 'Compra de suministros', amount: '200.00' },
-        { id: 4, date: '2024-07-14', description: 'Compra de suministros', amount: '200.00' },
-        { id: 5, date: '2024-07-14', description: 'Compra de suministros', amount: '200.00' },
-        { id: 6, date: '2024-07-14', description: 'Compra de suministros', amount: '200.00' },
-        { id: 7, date: '2024-07-14', description: 'Compra de suministros', amount: '200.00' },
-        { id: 8, date: '2024-07-14', description: 'Compra de suministros', amount: '200.00' },
-        // Agrega más transacciones según sea necesario
-    ]; 
+        { id: 1, date: '2024-07-13', description: 'Pago de nómina', amount: '650.00' },
+        { id: 2, date: '2024-07-13', description: 'Pago Empleado', amount: '210.00' },
+        { id: 3, date: '2024-07-13', description: 'Pago Empleado', amount: '240.00' },
+        { id: 4, date: '2024-07-14', description: 'Pago Empleado', amount: '220.00' },
+        { id: 5, date: '2024-07-14', description: 'Pago Empleados', amount: '230.00' },
+        { id: 6, date: '2024-07-15', description: 'Pago Empleados', amount: '250.00' },
+        { id: 7, date: '2024-07-16', description: 'Ingreso de dinero', amount: '260.00' },
+        { id: 8, date: '2024-07-17', description: 'Pago Empleado', amount: '270.00' },
+        { id: 9, date: '2024-07-18', description: 'Pago Empleado', amount: '280.00' },
+        { id: 10, date: '2024-07-23', description: 'Pago Empleado', amount: '290.00' },
+        
+    ];
+    const recentTransactions = transactions.slice(-8).reverse();
+
+    const formatDate = (dateString) => {
+        
+        return format(new Date(dateString + 'T00:00:00'), 'dd/MM' );
+    };
 
     return (
         <div className="home-container relative ">
@@ -27,26 +37,33 @@ function Home() {
                 <MenuHome />
                 <div className="flex mt-32 ml-80 ">
                     <Link to='/banking' className='mr-32' >
-                        <MoneyButton amount={availableAmount}/>
+                        <MoneyButton amount={availableAmount} />
                     </Link>
                 </div>
-                    <div className='bg-white w-3/12 h-1/2 mt-32 p-4 rounded-lg shadow-lg flex flex-col'>
+                <div className='bg-white w-3/12 h-5/6 mt-32 p-4 rounded-lg shadow-lg flex flex-col'>
                     <h2 className='font-bold text-lg mb-2'>Transacciones recientes</h2>
                     <ul className='flex-grow'>
-                        {transactions.map(transaction => (
+                        {recentTransactions.map(transaction => (
                             <li key={transaction.id} className='mb-2'>
-                                <div className='flex justify-between'>
-                                    <span>{transaction.date}</span>
-                                    <span>{transaction.description}</span>
-                                    <span>{transaction.amount}</span>
+                                <Link to={`activities/detail/${transaction.id}`} className='block p-2 rounded-lg hover:bg-violet-100'>
+                                <div className=' p-2 rounded-lg'>
+                                    <div className='flex justify-between outline-1'>
+                                        <span className='flex mt-3'>{transaction.description}</span>
+                                        <div className='text-right'>
+                                            <span className='block'>${transaction.amount}</span>
+                                            <span className='text-xs text-slate-400'>{formatDate(transaction.date)}</span>
+                                        </div>
+                                    </div>
                                 </div>
+                                </Link>
                             </li>
                         ))}
                     </ul>
-                    <Link to='/activities' className='block text-blue-500 mt-4 text-center'>
+                    <Link to='/activities' className='flex items-baseline ml-4 rounded-md text-blue-500 hover:bg-violet-100'>
                         Ver toda la actividad
+                    <IoIosArrowForward className="ml-64 w-4 h-4"/>
                     </Link>
-                    
+
                 </div>
             </div>
             <Footer />
