@@ -1,5 +1,5 @@
 import { ROUTES } from "./Helpers/RoutesPath";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LandingPage from "./views/LandingPage/Landing";
 import CreateAccount from "./views/Registration/CreateAccount";
 import Home from './views/Home/Home'
@@ -14,7 +14,7 @@ import { TestProvider } from "./context/testContext";
 function App() {
   return (
     <TestProvider>
-      <BrowserRouter>
+      
         <div className="App">
           <Routes>
             <Route exact path={ROUTES.LANDING} element={<LandingPage />} />
@@ -46,7 +46,7 @@ function App() {
             />
           </Routes>
         </div>
-      </BrowserRouter>
+      
     </TestProvider>
   );
 }
