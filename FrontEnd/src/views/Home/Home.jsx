@@ -11,7 +11,7 @@ import { FiUser } from "react-icons/fi";
 
 
 function Home() {
-    const availableAmount = '1.234.56';
+    const availableAmount = '1.234,56';
     const transactions = [
         { id: 1, date: '2024-07-13', description: 'Pago de nómina', amount: '650.00' },
         { id: 2, date: '2024-07-13', description: 'Pago Empleado', amount: '210.00' },
