@@ -1,12 +1,31 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import HomeIcon from "./assets/HomeIcon";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useContext } from "react";
 import { TestContext } from "../context/testContext";
+import { useParams } from "react-router-dom";
 
-const AdminAddUser = () => {
-  const { register, handleSubmit } = useForm();
-  const { registerRequest } = useContext(TestContext);
+function AdminEditUser() {
+  const { register, handleSubmit, setValue } = useForm();
+  const { updateUser, getUserById } = useContext(TestContext);
+  const param = useParams();
+
+  useEffect(() => {
+    async function loadUser() {
+      if (param.id) {
+        const currentUser = await getUserById(param.id);
+        console.log(currentUser.data);
+        setValue("name", currentUser.data.name);
+        setValue("email", currentUser.data.email);
+        setValue("document", currentUser.data.document);
+        setValue("password", currentUser.data.password);
+        setValue("confirmPassword", currentUser.data.password);
+      }
+    }
+
+    loadUser();
+  }, []);
+
   return (
     <div className="bg-slate-950 flex h-screen justify-center items-center p-3">
       <div className="flex flex-col  justify-center items-center bg-slate-600 p-3 rounded-lg ">
@@ -14,16 +33,16 @@ const AdminAddUser = () => {
           <HomeIcon width="30" height="30" color="#ffffff" />
         </a>
         <div className="flex  justify-center items-center ">
-          <h1 className="text-slate-50 text-xl ">Agregar Usuario</h1>
+          <h1 className="text-slate-50 text-xl ">Editar Usuarios</h1>
         </div>
         <div className="">
           <form
             onSubmit={handleSubmit(async (data) => {
               try {
-                await registerRequest(data);
-                alert("Usuario creado con éxito");
+                await updateUser(param.id, data);
+                alert("Usuario actualizado");
               } catch (error) {
-                alert("Error al crear el usuario");
+                alert("Error al actualizar el usuario");
               }
             })}
             className="flex flex-col gap-3 items-center justify-center"
@@ -70,7 +89,7 @@ const AdminAddUser = () => {
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <label className="block text-sm font-medium leading-6 text-gray-900">
                 Contraseña
               </label>
@@ -96,7 +115,7 @@ const AdminAddUser = () => {
                   {...register("confirmPassword", { required: true })}
                 />
               </div>
-            </div>
+            </div> */}
 
             <button
               type="submit"
@@ -109,6 +128,6 @@ const AdminAddUser = () => {
       </div>
     </div>
   );
-};
+}
 
-export default AdminAddUser;
+export default AdminEditUser;
