@@ -4,8 +4,27 @@ import ConfirmationButton from "../../components/InputComponents/ConfirmationBut
 import SignInBanner from "../../assets/svg/SignInBanner";
 import Footer from "../../components/Footer";
 import NavExample from "../../components/InputComponents/NavExample";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { getUserAct } from '../../redux/actions/userActions'
+import { clearUsers } from "../../redux/reducers/userSlice";
 
 export default function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user, auth } = useSelector((state) => state.userState);
+
+  useEffect(() => {
+    dispatch(getUserAct());
+    if(auth === true) {
+      navigate('/home')
+      return () => {
+        dispatch(clearUsers())
+      }
+    }
+  }, [dispatch, navigate, auth])
+
   return (
     <div>
       <NavExample />
