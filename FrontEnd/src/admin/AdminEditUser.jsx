@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import HomeIcon from "./assets/HomeIcon";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { TestContext } from "../context/testContext";
 import { useParams } from "react-router-dom";
@@ -88,34 +88,6 @@ function AdminEditUser() {
                 />
               </div>
             </div>
-
-            {/* <div>
-              <label className="block text-sm font-medium leading-6 text-gray-900">
-                Contraseña
-              </label>
-              <div className="relative mt-2 rounded-md shadow-sm">
-                <input
-                  type="password"
-                  placeholder={"Ingrese la contraseña"}
-                  className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-950 sm:text-sm sm:leading-6"
-                  {...register("password", { required: true })}
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium leading-6 text-gray-900">
-                Confirmar Contraseña
-              </label>
-              <div className="relative mt-2 rounded-md shadow-sm">
-                <input
-                  type="password"
-                  placeholder={"Confirme la contraseña"}
-                  className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-950 sm:text-sm sm:leading-6"
-                  {...register("confirmPassword", { required: true })}
-                />
-              </div>
-            </div> */}
 
             <button
               type="submit"
