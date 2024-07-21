@@ -33,22 +33,6 @@ const AdminHome = () => {
             <ListUsersIcon color={"#ffffff"} height={"70px"} width={"70px"} />
           }
         />
-        <LinkCards
-          route={ROUTES.ADMIN_EDIT_USER}
-          description={"Editar Usuarios"}
-          icon={
-            <EditUsersIcon color={"#ffffff"} height={"70px"} width={"70px"} />
-          }
-        />
-      </div>
-      <div className="flex gap-5 mt-10">
-        <LinkCards
-          route={ROUTES.ADMIN_DELETE_USER}
-          description={"Eliminar Usuarios"}
-          icon={
-            <DeleteUsersIcon color={"#ffffff"} height={"70px"} width={"70px"} />
-          }
-        />
       </div>
     </div>
   );

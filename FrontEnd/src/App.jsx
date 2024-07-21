@@ -8,8 +8,7 @@ import AdminLogin from "./admin/AdminLogin";
 import AdminHome from "./admin/AdminHome";
 import AdminAddUser from "./admin/AdminAddUser";
 import AdminListUsers from "./admin/AdminListUsers";
-import AdminUpdateUser from "./admin/AdminUpdateUser";
-import AdminDeleteUser from "./admin/AdminDeleteUser";
+import AdminEditUser from "./admin/AdminEditUser";
 import { TestProvider } from "./context/testContext";
 
 function App() {
@@ -27,7 +26,7 @@ function App() {
             <Route exact path={ROUTES.HOME} element={<MenuHome />} />
             <Route exact path={ROUTES.LOGIN} element={<Login />} />
             <Route exact path={ROUTES.ADMIN_LOGIN} element={<AdminLogin />} />
-            <Route exact path={ROUTES.ADMIN_HOME} element={<AdminHome />} />
+
             <Route
               exact
               path={ROUTES.ADMIN_NEW_USER}
@@ -38,15 +37,12 @@ function App() {
               path={ROUTES.ADMIN_USERS_LIST}
               element={<AdminListUsers />}
             />
+
+            <Route exact path={ROUTES.ADMIN_HOME} element={<AdminHome />} />
             <Route
               exact
               path={ROUTES.ADMIN_EDIT_USER}
-              element={<AdminUpdateUser />}
-            />
-            <Route
-              exact
-              path={ROUTES.ADMIN_DELETE_USER}
-              element={<AdminDeleteUser />}
+              element={<AdminEditUser />}
             />
           </Routes>
         </div>
