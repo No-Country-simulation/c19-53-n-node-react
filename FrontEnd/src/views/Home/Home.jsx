@@ -10,6 +10,7 @@ import { FiUser } from "react-icons/fi";
 
 
 
+
 function Home() {
     const availableAmount = '1.234,56';
     const transactions = [

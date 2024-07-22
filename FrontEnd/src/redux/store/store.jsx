@@ -21,9 +21,6 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
     reducer: 
-    // {
-    //     user: persistedReducer,
-    // }, middleware: [thunk]
     persistedReducer,
     middleware: (getDefaultMiddleware)=>
         getDefaultMiddleware({

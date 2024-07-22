@@ -16,6 +16,6 @@ router.get("/userbyid/:id", getUserById); //ruta para obtener un usuario por id
 router.get("/users", getAllUsers);
 router.put("/user/:id", updateUser);
 router.delete("/user/:id", deleteUser);
-router.get("/login", login);
+router.post("/login", login);
 
 module.exports = router;
