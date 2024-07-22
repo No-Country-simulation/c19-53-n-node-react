@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { registerRequest } from "../../api/auth";
 import { getUsers } from "../../api/auth";
 import { useState, useEffect } from "react";
@@ -8,9 +8,11 @@ import JoinUs from "../../assets/svg/JoinUs";
 import NavExample from "../../components/InputComponents/NavExample";
 import Footer from "../../components/Footer";
 import { useForm } from "react-hook-form";
+import {TestContext} from '../../context/testContext'
 
 export default function CreateAccount() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const { registerRequest } = useContext(TestContext);
 
   const fetchUsers = async () => {};
   useEffect(() => {
@@ -37,9 +39,15 @@ export default function CreateAccount() {
         </div>
 
         <form
-          onSubmit={handleSubmit(async () => {
-            const postUser = await registerRequest(values);
-            console.log("UserPosted:", postUser);
+          onSubmit={handleSubmit(async (data) => {
+            try { 
+              await registerRequest(data);
+              reset()
+              alert("Usuario creado con éxito");
+            } catch (error) {
+              alert("Error al crear el usuario");
+            }
+            
           })}
           className="mt-10 mb-10 flex flex-col gap-5 items-center bg-slate-50 p-8 rounded-lg drop-shadow w-full sm:max-w-lg"
         >
@@ -80,7 +88,7 @@ export default function CreateAccount() {
                 type="text"
                 placeholder={"Ingrese su numero de identificacion"}
                 className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
-                {...register("id", { required: true })}
+                {...register("document", { required: true })}
               />
             </div>
           </div>
