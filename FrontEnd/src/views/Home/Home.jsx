@@ -13,16 +13,16 @@ import { FiUser } from "react-icons/fi";
 function Home() {
     const availableAmount = '1.234,56';
     const transactions = [
-        { id: 1, date: '2024-07-13', description: 'Pago de nómina', amount: '650.00' },
-        { id: 2, date: '2024-07-13', description: 'Pago Empleado', amount: '210.00' },
-        { id: 3, date: '2024-07-13', description: 'Pago Empleado', amount: '240.00' },
-        { id: 4, date: '2024-07-14', description: 'Pago Empleado', amount: '220.00' },
-        { id: 5, date: '2024-07-14', description: 'Pago Empleados', amount: '230.00' },
-        { id: 6, date: '2024-07-15', description: 'Pago Empleados', amount: '250.00' },
-        { id: 7, date: '2024-07-16', description: 'Ingreso de dinero', amount: '260.00' },
-        { id: 8, date: '2024-07-17', description: 'Pago Empleado', amount: '270.00' },
-        { id: 9, date: '2024-07-18', description: 'Pago Empleado', amount: '280.00' },
-        { id: 10, date: '2024-07-23', description: 'Pago Empleado', amount: '290.00' },
+        { id: 1, date: '2024-07-13', description: 'Pago de nómina', amount: '650,00' },
+        { id: 2, date: '2024-07-13', description: 'Pago Empleado', amount: '210,00' },
+        { id: 3, date: '2024-07-13', description: 'Pago Empleado', amount: '240,00' },
+        { id: 4, date: '2024-07-14', description: 'Pago Empleado', amount: '220,00' },
+        { id: 5, date: '2024-07-14', description: 'Pago Empleados', amount: '230,00' },
+        { id: 6, date: '2024-07-15', description: 'Pago Empleados', amount: '250,00' },
+        { id: 7, date: '2024-07-16', description: 'Ingreso de dinero', amount: '260,00' },
+        { id: 8, date: '2024-07-17', description: 'Pago Empleado', amount: '270,00' },
+        { id: 9, date: '2024-07-18', description: 'Pago Empleado', amount: '280,00' },
+        { id: 10, date: '2024-07-23', description: 'Pago Empleado', amount: '2.990,00' },
 
     ];
     const recentTransactions = transactions.slice(-8).reverse();
