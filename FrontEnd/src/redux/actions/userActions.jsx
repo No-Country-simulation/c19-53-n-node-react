@@ -17,10 +17,11 @@ export const userLoginAct = (user) => async (dispatch) => {
         },
     });
     try{
-        const response = await axios.post('user/login', user, {
+        const response = await axios.post('api/login', user, {
             withCredentials:true
         });
         const userData = response.data;
+
 
         const expirationDate = new Date();
         expirationDate.setTime(expirationDate.getTime() + 3600 * 1000);
@@ -52,13 +53,14 @@ export const userLoginAct = (user) => async (dispatch) => {
     }
 };
 
-export const getUserAct = () => async(dispatch) =>{
+export const userLogoutAct = () => async (dispatch) => {
     try {
-        const response = await axios.get('/login');
-        return dispatch(getUsers(response.data));
-
+        await axios.post('api/logout', null, {
+            withCredentials: true
+        });
+        document.cookie = `miCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        dispatch(userLogout())
     } catch (error) {
         window.alert("Request failed:", error);
     }
 }
-
