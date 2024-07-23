@@ -1,4 +1,12 @@
+import React, {useState} from "react";
+import TermsModal from "./TermsModal";
+import PrivacyModal from "./PrivacyModal";
+
+
 export default function TermsAgree() {
+  const [isTermsModalOpen, setTermsModalOpen] = useState(false);
+  const [isPrivacyModalOpen, setPrivacyModalOpen] = useState(false)
+
   return (
     <div>
       <div className="flex items-center">
@@ -11,16 +19,18 @@ export default function TermsAgree() {
           />
           <label htmlFor="terms" className="ml-2 block text-xs text-gray-900">
             Acepto los{" "}
-            <a href="#" className="text-indigo-600">
+            <a href="##" className="text-indigo-600" onClick={() =>setTermsModalOpen(true)}>
               Términos y Condiciones
             </a>
             {""} y autorizo el uso de mis datos de acuerdo a las{" "}
-            <a href="#" className="text-indigo-600">
+            <a href="#" className="text-indigo-600" onClick={() => setPrivacyModalOpen(true)}>
               Política de Privacidad
             </a>
           </label>
         </div>
       </div>
+      <TermsModal isOpen={isTermsModalOpen} onRequestClose={() => setTermsModalOpen(false)}/>
+      <PrivacyModal isOpen={isPrivacyModalOpen} onRequestClose={() => setPrivacyModalOpen(false)}/>
     </div>
   );
 }
