@@ -3,7 +3,7 @@ import { registerRequest } from "../../api/auth";
 import { getUsers } from "../../api/auth";
 import { useState, useEffect } from "react";
 
-import TermsAgree from "../../components/InputComponents/TermsAgree";
+import TermsAgree from "../../components/InputComponents/Terms/TermsAgree";
 import JoinUs from "../../assets/svg/JoinUs";
 import NavExample from "../../components/InputComponents/NavExample";
 import Footer from "../../components/Footer";
