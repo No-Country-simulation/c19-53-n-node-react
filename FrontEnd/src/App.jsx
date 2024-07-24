@@ -10,7 +10,8 @@ import AdminAddUser from "./admin/AdminAddUser";
 import AdminListUsers from "./admin/AdminListUsers";
 import AdminEditUser from "./admin/AdminEditUser";
 import { TestProvider } from "./context/testContext";
-import Landing from "./views/LandingPage/Landing2";
+import Landing from "./views/LandingPage/Landing";
+
 function App() {
   return (
     <TestProvider>
