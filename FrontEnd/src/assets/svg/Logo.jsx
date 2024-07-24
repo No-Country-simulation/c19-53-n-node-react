@@ -1,4 +1,4 @@
-export default function Logo({ width, height }) {
+export default function Logo({ width, height, color }) {
   return (
     <svg
       version="1.0"
@@ -10,7 +10,7 @@ export default function Logo({ width, height }) {
     >
       <g
         transform="translate(0.000000,498.000000) scale(0.100000,-0.100000)"
-        fill="#000000"
+        fill={color}
         stroke="none"
       >
         <path
