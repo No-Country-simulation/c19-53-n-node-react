@@ -21,13 +21,14 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['empleado', 'empresa', 'administrador'],
+        enum: ['empleado', 'administrador'],
         required: true 
-      },
-    balance: { 
-        type: Number, 
-        default: 0 
     },
+    company: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Company',
+        required: true
+    }
 });
 
 const User = mongoose.model('User', userSchema);
