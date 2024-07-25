@@ -1,0 +1,10 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.content-wrapper {
+    display: flex;
+    flex: 1;
+}
