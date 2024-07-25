@@ -19,10 +19,17 @@ export const userSlice = createSlice({
         userLogout: (state) => {
             state.user = [];
             state.auth = false
-        }
+        },
+        clearUsers: (state) => {
+            state.users = [];
+        },
+        updateFromCookie: (state, action) => {
+            state.user = action.payload;
+            state.auth = true;
+        },
     }
 })
 
-export const {userLogin, getUsers, userLogout} = userSlice.actions;
+export const {userLogin, getUsers, userLogout, clearUsers, updateFromCookie} = userSlice.actions;
 
 export default userSlice.reducer;

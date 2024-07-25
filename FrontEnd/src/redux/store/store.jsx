@@ -3,12 +3,14 @@ import storage from 'redux-persist/lib/storage'
 import { combineReducers } from '@reduxjs/toolkit';
 import user from '../reducers/userSlice'
 import {persistStore, persistReducer} from 'redux-persist';
+// import  thunk  from 'redux-thunk';
 
 
 
 const persistConfig = {
     key: 'root',
     storage,
+    whitelist: ['userState']
 };
 
 const rootReducer = combineReducers({
@@ -18,7 +20,8 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-    reducer: persistedReducer,
+    reducer: 
+    persistedReducer,
     middleware: (getDefaultMiddleware)=>
         getDefaultMiddleware({
             serializableCheck: {
