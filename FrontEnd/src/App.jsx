@@ -2,7 +2,7 @@ import { ROUTES } from "./Helpers/RoutesPath";
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./views/LandingPage/Landing";
 import CreateAccount from "./views/Registration/CreateAccount";
-import Home from "./views/Home/Home";
+import Home2 from "./views/Home/Home2";
 import Login from "./views/LogIn/Login";
 import AdminLogin from "./admin/AdminLogin";
 import AdminHome from "./admin/AdminHome";
@@ -23,7 +23,7 @@ function App() {
             path={ROUTES.CREATEACCOUNT}
             element={<CreateAccount />}
           />
-          <Route exact path={ROUTES.HOME} element={<Home />} />
+          <Route exact path={ROUTES.HOME} element={<Home2 />} />
           <Route exact path={ROUTES.LOGIN} element={<Login />} />
           <Route exact path={ROUTES.ADMIN_LOGIN} element={<AdminLogin />} />
 
