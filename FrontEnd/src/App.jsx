@@ -12,6 +12,8 @@ import AdminEditUser from "./admin/AdminEditUser";
 import { TestProvider } from "./context/testContext";
 import Landing from "./views/LandingPage/Landing";
 
+import UserProfile from "./views/UserProfile/UserProfile";
+
 function App() {
   return (
     <TestProvider>
@@ -44,6 +46,7 @@ function App() {
             path={ROUTES.ADMIN_EDIT_USER}
             element={<AdminEditUser />}
           />
+          <Route exact path={ROUTES.USERPROFILE} element={<UserProfile/>}/>
         </Routes>
       </div>
     </TestProvider>
