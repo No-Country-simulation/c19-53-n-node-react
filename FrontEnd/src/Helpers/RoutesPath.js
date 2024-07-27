@@ -10,4 +10,11 @@ export const ROUTES = {
   ADMIN_EDIT_USER: "/admin/:id",
   USERPROFILE: "/userprofile",
   ERROR: "*",
+  TRANSACTIONS_LIST: "/transactionslist",
+  CHECKIN: "/checkin/:id",
+  CREATE_TRANSACTION: "/createtransaction/:id",
+  EMPLOYEE_LIST: "/employeelist",
+  ADD_EMPLOYEE: "/addemployee",
+  EMPLOYEE_PROFILE: "/employeeprofile/:id",
+  EDIT_EMPLOYEE: "/editemployee/:id",
 };

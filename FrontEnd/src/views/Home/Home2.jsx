@@ -1,12 +1,11 @@
 import React from "react";
-import BottomBar from "./components/BottomBar";
-import NotificationsBell from "./assets/NotificationsBell";
-import PaymentCardIcon from "./assets/PaymentCardIcon";
-
-import AddMoneyIcon from "./assets/AddMoneyIcon";
-import TransferIcon from "./assets/TransferIcon";
-
-import Logo2 from "./assets/Logo2";
+import BottomBar from "../components/BottomBar";
+import NotificationsBell from "../assets/svg/NotificationsBell";
+import PaymentCardIcon from "../assets/svg/PaymentCardIcon";
+import AddMoneyIcon from "../assets/svg/AddMoneyIcon";
+import TransferIcon from "../assets/svg/TransferIcon";
+import { Link } from "react-router-dom";
+import Logo2 from "../assets/svg/Logo2";
 
 const Home2 = () => {
   return (
@@ -36,7 +35,7 @@ const Home2 = () => {
             </div>
             {/* SALDO */}
             <div className="flex justify-center mt-3 md:mt-0 text-white ">
-              <div className="bg-black w-80 md:w-7/12 h-80 rounded-2xl shadow-black shadow-md flex flex-col justify-center items-center gap-2">
+              <div className="bg-black w-80 md:w-7/12 h-80 rounded-2xl shadow-black shadow-sm flex flex-col justify-center items-center gap-2">
                 <div className="flex flex-col justify-center items-center md:flex-row md:gap-5">
                   <div>
                     <Logo2 width="80" height="80" color="white" />
@@ -63,9 +62,12 @@ const Home2 = () => {
                       <h1 className="text-center">Ingresa</h1>
                     </div>
                     <div>
-                      <button className="bg-white w-16 h-16 rounded-full flex justify-center items-center">
+                      <Link
+                        className="bg-white w-16 h-16 rounded-full flex justify-center items-center"
+                        to="/transactionslist"
+                      >
                         <TransferIcon width="40" height="40" color="black" />
-                      </button>
+                      </Link>
                       <h1 className="text-center">Transferir</h1>
                     </div>
                   </div>

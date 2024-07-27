@@ -11,6 +11,14 @@ import AdminListUsers from "./admin/AdminListUsers";
 import AdminEditUser from "./admin/AdminEditUser";
 import { TestProvider } from "./context/testContext";
 import Landing from "./views/LandingPage/Landing";
+import TransactionsList from "./views/TransactionsPage/TransactionsList";
+import CreateTransaction from "./views/TransactionsPage/CreateTransaction";
+import CheckIn from "./views/TransactionsPage/CheckIn";
+
+import EmployeeList from "./views/EmployeesPage/EmployeesList";
+import AddEmployee from "./views/EmployeesPage/AddEmployee";
+import EmployeeProfile from "./views/EmployeesPage/EmployeeProfile";
+import EditEmployee from "./views/EmployeesPage/EditEmployee";
 
 import UserProfile from "./views/UserProfile/UserProfile";
 
@@ -46,7 +54,22 @@ function App() {
             path={ROUTES.ADMIN_EDIT_USER}
             element={<AdminEditUser />}
           />
-          <Route exact path={ROUTES.USERPROFILE} element={<UserProfile/>}/>
+          <Route exact path={ROUTES.USERPROFILE} element={<UserProfile />} />
+          <Route
+            exact
+            path={ROUTES.TRANSACTIONS_LIST}
+            element={<TransactionsList />}
+          />
+          <Route
+            path={ROUTES.CREATE_TRANSACTION}
+            element={<CreateTransaction />}
+          />
+          <Route path={ROUTES.CHECKIN} element={<CheckIn />} />
+
+          <Route path={ROUTES.EMPLOYEE_LIST} element={<EmployeeList />} />
+          <Route path={ROUTES.ADD_EMPLOYEE} element={<AddEmployee />} />
+          <Route path={ROUTES.EMPLOYEE_PROFILE} element={<EmployeeProfile />} />
+          <Route path={ROUTES.EDIT_EMPLOYEE} element={<EditEmployee />} />
         </Routes>
       </div>
     </TestProvider>
