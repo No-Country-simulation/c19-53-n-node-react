@@ -1,5 +1,6 @@
 import React from "react";
 import ConfirmationButton from "../../../components/InputComponents/ConfirmationButton";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -18,7 +19,9 @@ const Hero = () => {
           administración de pagos.
         </p>
         <div className="">
+          <Link to='/createaccount'>
           <ConfirmationButton name={"Descubre más"} />
+          </Link>
         </div>
       </div>
     </div>

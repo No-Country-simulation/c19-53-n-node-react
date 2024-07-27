@@ -42,7 +42,7 @@ const Home2 = () => {
                   </div>
                   <div className="text-center">
                     <h1 className="font-thin text-lg">Saldo Disponible</h1>
-                    <h2 className="font-semibold text-2xl">$1000,00</h2>
+                    <h2 className="font-semibold text-2xl">$1.000,00</h2>
                   </div>
                 </div>
 
