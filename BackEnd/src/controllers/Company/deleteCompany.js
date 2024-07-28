@@ -1,14 +1,18 @@
-const Company = require('../models/Company');
+const CompanyModel = require('../../models/Company');
 
 const deleteCompany = async (req, res) => {
+    
+    const { id } = req.params;
+    
     try {
-        const deletedCompany = await Company.findByIdAndDelete(req.params.id);
+        const deletedCompany = await CompanyModel.findByIdAndDelete(req.params.id);
+        
         if (!deletedCompany) {
-            return res.status(404).json({ message: 'Company not found' });
+            return res.status(404).json({ error: 'Compañia no encontrado' });
         }
-        res.status(200).json({ message: 'Company deleted' });
+        res.status(200).json({ message: 'Compañia eliminada exitosamente' });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ error: 'Error al eliminar compañia', details: error.message });
     }
 };
 

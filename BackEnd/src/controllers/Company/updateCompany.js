@@ -1,8 +1,8 @@
-const Company = require('../models/Company');
+const CompanyModel = require('../../models/Company');
 
 const updateCompany = async (req, res) => {
     try {
-        const updatedCompany = await Company.findByIdAndUpdate(
+        const updatedCompany = await CompanyModel.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true }

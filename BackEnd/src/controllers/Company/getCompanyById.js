@@ -1,8 +1,8 @@
-const Company = require('../models/Company');
+const CompanyModel = require('../../models/Company');
 
 const getCompanyById = async (req, res) => {
     try {
-        const company = await Company.findById(req.params.id);
+        const company = await CompanyModel.findById(req.params.id);
         if (!company) {
             return res.status(404).json({ message: 'Company not found' });
         }
