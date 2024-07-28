@@ -1,5 +1,6 @@
 import React from "react";
 import ConfirmationButton from "../../../components/InputComponents/ConfirmationButton";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -10,7 +11,7 @@ const Hero = () => {
         </h1>
       </div>
       <div className=" w-80 ">
-        <img src="public/LandingBannerImage.png" alt="lalal" />
+        <img src="/LandingBannerImage.png" alt="lalal" />
       </div>
       <div className="flex flex-col  justify-center items-center w-96 gap-9">
         <p className="text-xl text-center">
@@ -18,7 +19,9 @@ const Hero = () => {
           administración de pagos.
         </p>
         <div className="">
+          <Link to='/createaccount'>
           <ConfirmationButton name={"Descubre más"} />
+          </Link>
         </div>
       </div>
     </div>

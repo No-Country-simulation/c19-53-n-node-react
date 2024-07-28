@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../../../assets/svg/Logo";
 import ConfirmationButton from "../../../components/InputComponents/ConfirmationButton";
+import { Link } from "react-router-dom";
 
 const LandingNavBar = () => {
   return (
@@ -11,7 +12,9 @@ const LandingNavBar = () => {
       </div>
       {/* boton */}
       <div className="p-4">
-        <ConfirmationButton name={"Iniciar Sesion"} />
+        <Link to='/login'>
+        <ConfirmationButton name={"Iniciar Sesion"}/>
+        </Link>
       </div>
     </div>
   );

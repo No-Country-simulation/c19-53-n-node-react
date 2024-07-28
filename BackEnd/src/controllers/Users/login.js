@@ -29,15 +29,15 @@ const login = async (req, res) => {
         // }
         
         if (!response) {
-            return res.status(401).json({ message: "Contraseña incorrecta" });
+            return res.status(401).json({ message: "Contraseña incorrecta", user });
         }
 
 
-        // const token = jsonSign(userData, JWT_SECRET_KEY, { expiresIn : "5h"});
+        const token = jsonSign(userData, JWT_SECRET_KEY, { expiresIn : "5h"});
         // Reemplaza el token del usuario en el objeto user
-        // return res.status(200).json({user, token});
+        return res.status(200).json({ message :"contraseña correcta", user, token});
 
-        return res.status(200).json({ message :"contraseña correcta"});
+        
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: error.message });

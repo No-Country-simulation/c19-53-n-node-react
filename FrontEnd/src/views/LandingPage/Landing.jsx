@@ -79,7 +79,7 @@ function LandingPage() {
               coName={"Innovatech Ltd"}
             />
             <ClientCard
-              img={"public/Face3.jpg"}
+              img={"/Face3.jpg"}
               description={
                 "La claridad y transparencia que 'JustPay' proporciona a nuestros empleados sobre sus salarios ha mejorado notablemente la satisfacción laboral en NextGen Enterprises. La aplicación es una herramienta indispensable para nuestra gestión de sueldos."
               }

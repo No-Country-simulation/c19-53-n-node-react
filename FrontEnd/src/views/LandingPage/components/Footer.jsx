@@ -89,7 +89,10 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="mt-8 text-xs text-white text-center">
+        <div className="w-full h-5 p-3">
+          <hr className=" border-withe " />
+        </div>
+        <p className=" text-xs text-white text-center">
           © 2024 JustPay. Todos los derechos reservados.
         </p>
       </div>
