@@ -24,7 +24,8 @@ const createUser = async (req, res) => {
             email,
             password: hashedPassword,
             document,
-            role
+            role,
+            company
         });
 
         await newUser.save()
@@ -32,7 +33,8 @@ const createUser = async (req, res) => {
         return res.status(201).json({
             name : newUser.name,
             email : newUser.email,
-            role: newUser.role
+            role: newUser.role,
+            company: newUser.company
         });
 
     } catch (error) {
