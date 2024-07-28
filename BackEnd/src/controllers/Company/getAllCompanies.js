@@ -13,7 +13,7 @@ const getAllCompanies = async (req, res) => {
 
     } catch (error) {
 
-        res.status(500).json({error: 'error al obtener compañias',details: error.message });
+        res.status(500).json({error: 'Error al obtener compañias',details: error.message });
     }
 };
 

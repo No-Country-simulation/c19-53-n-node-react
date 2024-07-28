@@ -1,11 +1,19 @@
 const UserModel = require("../../models/User")
+const CompanyModel = require('../../models/Company');
 const bcrypt = require("bcrypt")
 
 const createUser = async (req, res) => {
-    const {name, email, password, document, role, companyId } = req.body
+    const {name, email, password, document, role } = req.body
+    const { companyId } = req.params;
+
     try {
 
         const existingUserEmail = await UserModel.findOne( {email} )
+
+        const company = await CompanyModel.findById(companyId);
+        if (!company) {
+            return res.status(404).json({ message: 'No existe esa compañia' });
+        }
 
         if(existingUserEmail){
             return res.status(400).json({ message: 'El email ya fue registrado'})
