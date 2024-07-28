@@ -7,7 +7,8 @@ const companySchema = new mongoose.Schema({
     },
     legalDocument: { 
         type: String, 
-        required: true 
+        required: true,
+        unique: true  
     },
     email: { 
         type: String, 
@@ -17,32 +18,7 @@ const companySchema = new mongoose.Schema({
     password: { 
         type: String, 
         required: true 
-    },
-    employees: [{
-        name: { 
-            type: String, 
-            required: true 
-        },
-        document: { 
-            type: String, 
-            required: true,
-            unique: true 
-        },
-        email: { 
-            type: String, 
-            required: true, 
-            unique: true 
-        },
-        password: { 
-            type: String, 
-            required: true 
-        },
-        role: {
-            type: String,
-            enum: ['empleado'],
-            required: true 
-        }
-    }]
+    }
 });
 
 const Company = mongoose.model('Company', companySchema);
