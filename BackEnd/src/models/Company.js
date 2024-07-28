@@ -51,6 +51,11 @@ const companySchema = new mongoose.Schema({
             type: String,
             enum: ['empleado'],
             required: true 
+        },
+        companyId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Company',
+            required: true
         }
     }]
 });
