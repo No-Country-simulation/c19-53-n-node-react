@@ -1,17 +1,17 @@
-const Users = require("../../models/Users")
+const UserModel = require("../../models/User")
 const bcrypt = require("bcrypt")
 
 const createUser = async (req, res) => {
-    const {name, email, password, document, role } = req.body
+    const {name, email, password, document, role, companyId } = req.body
     try {
 
-        const existingUserEmail = await Users.findOne( {email} )
+        const existingUserEmail = await UserModel.findOne( {email} )
 
         if(existingUserEmail){
             return res.status(400).json({ message: 'El email ya fue registrado'})
         }
 
-        const existingUserDocument = await Users.findOne( {document} )
+        const existingUserDocument = await UserModel.findOne( {document} )
 
         if(existingUserDocument){
             return res.status(400).json({ message: 'El documento ya fue registrado'})
@@ -19,13 +19,13 @@ const createUser = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
-        const newUser = await Users.create({
+        const newUser = await UserModel.create({
             name,
             email,
             password: hashedPassword,
             document,
             role,
-            company
+            companyId
         });
 
         await newUser.save()
@@ -33,8 +33,9 @@ const createUser = async (req, res) => {
         return res.status(201).json({
             name : newUser.name,
             email : newUser.email,
+            document: newUser.document,
             role: newUser.role,
-            company: newUser.company
+            companyId: newUser.companyId
         });
 
     } catch (error) {

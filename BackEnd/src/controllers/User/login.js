@@ -1,4 +1,4 @@
-const User = require("../../models/Users");
+const User = require("../../models/User");
 const { compare } = require("../../utils/bcrypt");
 
 const login = async (req, res) => {

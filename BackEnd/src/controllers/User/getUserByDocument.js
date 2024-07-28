@@ -1,4 +1,4 @@
-const User = require("../../models/Users");
+const User = require("../../models/User");
 
 const getUserByDocument = async (req, res) => {
     const { document } = req.params
