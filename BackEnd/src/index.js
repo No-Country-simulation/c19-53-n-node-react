@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 
-const routes = require("./routes/usersRoutes.js");
+const userRoutes = require("./routes/usersRoutes.js");
 const companyRoutes = require("./routes/companyRoutes.js");
 const server = express();
 require("./db/dbConnection.js");
@@ -25,7 +25,7 @@ server.use(
   })
 );
 
-server.use("/api", routes);
+server.use("/api", userRoutes);
 server.use("/api", companyRoutes);
 
 server.use((err, req, res, next) => {
