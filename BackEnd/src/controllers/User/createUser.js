@@ -1,7 +1,7 @@
 const Users = require("../../models/Users")
 const bcrypt = require("bcrypt")
 
-const postUser = async (req, res) => {
+const createUser = async (req, res) => {
     const {name, email, password, document, role } = req.body
     try {
 
@@ -40,4 +40,4 @@ const postUser = async (req, res) => {
         res.status(500).json({ error: 'Error al crear usuario' , details:error.message});
     }
 }
-module.exports = postUser
+module.exports = createUser

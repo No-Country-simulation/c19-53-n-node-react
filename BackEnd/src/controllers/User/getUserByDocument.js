@@ -1,6 +1,6 @@
 const User = require("../../models/Users");
 
-const getUser = async (req, res) => {
+const getUserByDocument = async (req, res) => {
     const { document } = req.params
 
     try {
@@ -21,4 +21,4 @@ const getUser = async (req, res) => {
     }
 };
 
-module.exports = getUser;
+module.exports = getUserByDocument;
