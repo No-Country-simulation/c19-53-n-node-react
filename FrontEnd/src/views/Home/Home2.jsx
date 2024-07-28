@@ -217,41 +217,6 @@ const Home2 = () => {
                   </ul>
                 </div>
               </div>
-              {/* GASTOS */}
-              <div className="p-2 rounded-md  shadow-md shadow-gray-800 w-full md:w-96">
-                <div className="flex justify-between p-5">
-                  <h1>Resumen de gastos</h1>
-                  <a href="">Ver Todo</a>
-                </div>
-                <div className="p-2">
-                  <ul className="flex flex-col gap-2">
-                    <li className="border rounded-md p-2">
-                      <div className="flex justify-center">
-                        <div className="text-center">
-                          <p>Gastos</p>
-                          <p>Enero</p>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="border rounded-md p-2">
-                      <div className="flex justify-center">
-                        <div className="text-center">
-                          <p>Gastos</p>
-                          <p>Diciembre</p>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="border rounded-md p-2">
-                      <div className="flex justify-center">
-                        <div className="text-center">
-                          <p>Gastos</p>
-                          <p>Noviembre</p>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </div>
             {/* BAR */}
             <BottomBar />

@@ -46,54 +46,46 @@ const CreateTransaction = () => {
   return (
     <>
       <div>
-        <div>
-          <div className="bg-violet-500 h-60 w-full rounded-b-lg">
-            {/* AVATAR */}
-            <div className="flex justify-end p-4">
-              <button className="md:pr-20">
-                <NotificationsBell width="30" height="30" color="white" />
-              </button>
-            </div>
-            {/* EMPLEADOS */}
-            <div className="flex justify-center mt-3 md:mt-0 text-white ">
-              <div className="bg-violet-500 w-full h-96   flex flex-col justify-center items-center gap-2">
-                <div className="flex flex-col justify-center items-center md:flex-row md:gap-5">
-                  <div className="text-center flex flex-col justify-center items-center gap-8">
-                    <div className="flex flex-col font-thin text-sm justify-center items-center ">
-                      <div className="flex flex-col justify-center items-center p-2">
-                        <TransferIcon width="50" height="50" color="white" />
-                        <h1 className="font-thin text-xl">
-                          Vas a transferir a:
-                        </h1>
-                      </div>
+        <div className="bg-violet-500 h-screen w-full flex flex-col justify-center rounded-b-lg md:pt-8">
+          {/* AVATAR */}
 
-                      <img
-                        className="border w-16 h-16 rounded-full"
-                        src={filteredEmployees.image}
-                        alt=""
-                      />
-                      <p className="text-white">{filteredEmployees.name}</p>
-                      <p className="text-white">{filteredEmployees.bank}</p>
-                      <p className="text-white">{filteredEmployees.CBU}</p>
+          {/* EMPLEADOS */}
+          <div className="flex justify-center  md:mt-0 text-white ">
+            <div className="bg-violet-500 w-full  h-full flex flex-col justify-center items-center gap-2">
+              <div className="flex flex-col justify-center items-center md:flex-row md:gap-5">
+                <div className="text-center flex flex-col justify-center items-center gap-8">
+                  <div className="flex flex-col font-thin text-sm justify-center items-center ">
+                    <div className="flex flex-col justify-center items-center p-2">
+                      <TransferIcon width="50" height="50" color="white" />
+                      <h1 className="font-thin text-xl">Vas a transferir a:</h1>
                     </div>
 
-                    <input
-                      type="number"
-                      placeholder={"Ingresa el monto a transferir"}
-                      onChange={(e) => console.log(e.target.value)}
-                      required
-                      className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
+                    <img
+                      className="border w-16 h-16 rounded-full"
+                      src={filteredEmployees.image}
+                      alt=""
                     />
-                    <Link to={`/checkin/${filteredEmployees.id}`}>
-                      <ConfirmationButton name="Transferir" action="submit" />
-                    </Link>
+                    <p className="text-white">{filteredEmployees.name}</p>
+                    <p className="text-white">{filteredEmployees.bank}</p>
+                    <p className="text-white">{filteredEmployees.CBU}</p>
                   </div>
+
+                  <input
+                    type="number"
+                    placeholder={"Ingresa el monto a transferir"}
+                    onChange={(e) => console.log(e.target.value)}
+                    required
+                    className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
+                  />
+                  <Link to={`/checkin/${filteredEmployees.id}`}>
+                    <ConfirmationButton name="Transferir" action="submit" />
+                  </Link>
                 </div>
               </div>
             </div>
-            {/* BAR */}
-            <BottomBar />
           </div>
+          {/* BAR */}
+          <BottomBar />
         </div>
       </div>
     </>

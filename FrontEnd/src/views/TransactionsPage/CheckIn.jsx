@@ -46,13 +46,7 @@ const CheckIn = () => {
     <>
       <div>
         <div>
-          <div className="bg-violet-500 h-60 w-full rounded-b-lg shadow-violet-400 ">
-            {/* AVATAR */}
-            <div className="flex justify-end p-4">
-              <button className="md:pr-20">
-                <NotificationsBell width="30" height="30" color="white" />
-              </button>
-            </div>
+          <div className="bg-violet-500 h-screen w-full flex flex-col justify-center rounded-b-lg md:pt-8">
             {/* EMPLEADOS */}
             <div className="flex justify-center mt-3 md:mt-0 text-white ">
               <div className="bg-violet-500 w-full h-96   flex flex-col justify-center items-center gap-2">

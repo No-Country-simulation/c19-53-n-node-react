@@ -6,6 +6,7 @@ import EditIcon from "../assets/svg/EditIcon";
 import EmployeesIcon from "../assets/svg/EmployeesIcon";
 
 import { Link } from "react-router-dom";
+import AddIcon from "../TransactionsPage/AddIcon";
 
 const EmployeesList = () => {
   const Employees = [
@@ -41,16 +42,9 @@ const EmployeesList = () => {
     <>
       <div>
         <div>
-          <div className="bg-black h-60 w-full ">
-            {/* AVATAR */}
-            <div className="flex justify-end p-4">
-              <button className="md:pr-20">
-                <NotificationsBell width="30" height="30" color="white" />
-              </button>
-            </div>
-            {/* EMPLEADOS */}
+          <div className="bg-black h-screen w-full pt-16">
             <div className="flex justify-center mt-3 md:mt-0 text-white ">
-              <div className="bg-black w-full  shadow-md flex flex-col justify-center items-center gap-2">
+              <div className="bg-black w-full   flex flex-col justify-center items-center gap-2">
                 <div className="flex flex-col justify-center items-center md:flex-row md:gap-5">
                   <div className="text-center flex flex-col justify-center items-center">
                     <EmployeesIcon width="50" height="50" color="white" />
@@ -75,8 +69,25 @@ const EmployeesList = () => {
                     className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
                   />
                 </div>
+                {/* AGREGAR EMPLEADOS */}
                 <div className="p-2 bg-black text-white">
                   <ul className="flex flex-col gap-2">
+                    <li className="border rounded-md p-2">
+                      <div className="flex justify-center w-full">
+                        <Link className="flex items-center justify-between gap-3 w-full">
+                          <EmployeesIcon width="50" height="50" color="white" />
+                          <div className="flex justify-center items-center gap-5 p-2">
+                            <div className="text-center">
+                              <p> Agregar nuevo empleado</p>
+                            </div>
+                            <Link>
+                              <AddIcon width="40" height="40" color="white" />
+                            </Link>
+                          </div>
+                        </Link>
+                      </div>
+                    </li>
+                    {/* LISTA DE EMPLEADOS */}
                     {Employees.map((employee) => (
                       <li key={employee.id} className="border rounded-md p-2">
                         <div className="flex justify-center w-full">
@@ -93,7 +104,13 @@ const EmployeesList = () => {
                               <div className="text-center">
                                 <p>{employee.name}</p>
                               </div>
-                              <EditIcon width="40" height="40" color="white" />
+                              <Link to={`/editemployee/${employee.id}`}>
+                                <EditIcon
+                                  width="40"
+                                  height="40"
+                                  color="white"
+                                />
+                              </Link>
                               <Link to={`/createtransaction/${employee.id}`}>
                                 <TransferIcon
                                   width="40"
