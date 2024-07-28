@@ -1,17 +1,17 @@
 const { Router } = require("express");
 
-const login = require("../controllers/Users/login");
-const getUser = require("../controllers/Users/getUser");
-const getAllUsers = require("../controllers/Users/getAllUsers");
-const postUsers = require("../controllers/Users/postUser");
-const deleteUser = require("../controllers/Users/deleteUser");
-const updateUser = require("../controllers/Users/updateUser");
-const getUserById = require("../controllers/Users/getUserById");
+const login = require("../controllers/User/login");
+const getUserByDocument = require("../controllers/User/getUserByDocument");
+const getAllUsers = require("../controllers/User/getAllUsers");
+const createUser = require("../controllers/User/createUser");
+const deleteUser = require("../controllers/User/deleteUser");
+const updateUser = require("../controllers/User/updateUser");
+const getUserById = require("../controllers/User/getUserById");
 
 const router = Router();
 
-router.post("/users", postUsers);
-router.get("/user/:document", getUser);
+router.post("/users", createUser);
+router.get("/userbydocument/:document", getUserByDocument);
 router.get("/userbyid/:id", getUserById); //ruta para obtener un usuario por id
 router.get("/users", getAllUsers);
 router.put("/user/:id", updateUser);
