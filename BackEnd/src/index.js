@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 
 const routes = require("./routes/usersRoutes.js");
+const companyRoutes = require("./routes/companyRoutes.js");
 const server = express();
 require("./db/dbConnection.js");
 
@@ -25,6 +26,7 @@ server.use(
 );
 
 server.use("/api", routes);
+server.use("/api", companyRoutes);
 
 server.use((err, req, res, next) => {
   // eslint-disable-line no-unused-vars
