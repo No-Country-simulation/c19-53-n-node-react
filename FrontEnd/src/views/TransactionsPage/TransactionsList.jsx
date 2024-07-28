@@ -40,14 +40,7 @@ const TransactionsList = () => {
     <>
       <div>
         <div>
-          <div className="bg-violet-500  h-60 w-full rounded-b-lg text-white ">
-            {/* AVATAR */}
-            <div className="flex justify-end p-4">
-              <button className="md:pr-20">
-                <NotificationsBell width="30" height="30" color="white" />
-              </button>
-            </div>
-            {/* EMPLEADOS */}
+          <div className="bg-violet-500  h-screen w-full pt-16 text-white">
             <div className="flex justify-center mt-3 md:mt-0  ">
               <div className="bg-violet-500 w-full  flex flex-col justify-center items-center gap-2">
                 <div className="flex flex-col justify-center items-center md:flex-row md:gap-5">

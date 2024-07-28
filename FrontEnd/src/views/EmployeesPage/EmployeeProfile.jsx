@@ -48,7 +48,7 @@ const EmployeeProfile = () => {
     <>
       <div>
         <div>
-          <div className="bg-black h-60 w-full rounded-b-lg">
+          <div className="bg-black flex flex-col justify-center h-screen w-full rounded-b-lg">
             {/* AVATAR */}
             <div className="flex justify-end p-4">
               <button className="md:pr-20"></button>
@@ -88,7 +88,7 @@ const EmployeeProfile = () => {
                     <div>
                       <div className="flex gap-10">
                         <Link
-                          to="/edit-employee"
+                          to={`/editemployee/${filteredEmployees.id}`}
                           className="font-thin flex flex-col justify-center items-center"
                         >
                           <EditIcon width="30" height="30" color="white" />
