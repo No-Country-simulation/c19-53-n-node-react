@@ -1,9 +1,9 @@
-const Company = require('../models/Company');
+const CompanyModel = require('../../models/Company');
 
-const postCompany = async (req, res) => {
+const createCompany = async (req, res) => {
     const { name, legalDocument, email, password, employees } = req.body;
 
-    const newCompany = new Company({
+    const newCompany = new CompanyModel({
         name,
         legalDocument,
         email,
@@ -19,4 +19,4 @@ const postCompany = async (req, res) => {
     }
 };
 
-module.exports = postCompany;
+module.exports = createCompany;
