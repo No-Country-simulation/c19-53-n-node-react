@@ -44,7 +44,7 @@ const BottomBar = () => {
               <StatsIcon width="40" height="40" color={"white"} />
             </div>
             <span class="tab tab-whishlist block text-xs text-white">
-              Estadisticas
+              Mi Actividad
             </span>
           </a>
         </div>

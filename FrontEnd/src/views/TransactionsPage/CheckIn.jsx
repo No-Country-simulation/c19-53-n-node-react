@@ -55,7 +55,7 @@ const CheckIn = () => {
             </div>
             {/* EMPLEADOS */}
             <div className="flex justify-center mt-3 md:mt-0 text-white ">
-              <div className="bg-black w-80 md:w-7/12 h-full rounded-2xl shadow-black shadow-sm flex flex-col justify-center items-center gap-2">
+              <div className="bg-violet-500 w-full h-96   flex flex-col justify-center items-center gap-2">
                 <div className="flex flex-col justify-center items-center md:flex-row md:gap-5">
                   <div className="text-center flex flex-col justify-center items-center gap-3">
                     <CheckedIcon width="50" height="50" color="white" />
@@ -76,10 +76,15 @@ const CheckIn = () => {
                       <p>Fecha: 27/07/2024 - 00:56</p>
                     </div>
                     <div className=" flex justify-center items-center text-white font-thin gap-10">
-                      <Link to="/transactionslist">Nueva transferencia</Link>
+                      <Link
+                        className="flex w-36 text-xs justify-center border rounded-lg bg-violet-500 px-6 py-2  font-semibold leading-6 text-white shadow-md  hover:bg-violet-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        to="/transactionslist"
+                      >
+                        Transferir a otros
+                      </Link>
                       <Link
                         to="/home"
-                        className="text-white font-thin px-3 py-1"
+                        className="flex w-36 text-xs justify-center border rounded-lg bg-violet-500 px-6 py-2 font-semibold leading-6 text-white shadow-md  hover:bg-violet-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       >
                         Volver al inicio
                       </Link>

@@ -5,6 +5,7 @@ import NotificationsBell from "../assets/svg/NotificationsBell";
 import { Link } from "react-router-dom";
 import ConfirmationButton from "../components/ConfirmationButton";
 import { useParams } from "react-router-dom";
+import TransferIcon from "../assets/svg/TransferIcon";
 
 const CreateTransaction = () => {
   const Employees = [
@@ -46,7 +47,7 @@ const CreateTransaction = () => {
     <>
       <div>
         <div>
-          <div className="bg-violet-500 h-60 w-full rounded-b-lg shadow-violet-400 ">
+          <div className="bg-violet-500 h-60 w-full rounded-b-lg">
             {/* AVATAR */}
             <div className="flex justify-end p-4">
               <button className="md:pr-20">
@@ -55,10 +56,17 @@ const CreateTransaction = () => {
             </div>
             {/* EMPLEADOS */}
             <div className="flex justify-center mt-3 md:mt-0 text-white ">
-              <div className="bg-black w-80 md:w-7/12 h-96 rounded-2xl shadow-black shadow-md flex flex-col justify-center items-center gap-2">
+              <div className="bg-violet-500 w-full h-96   flex flex-col justify-center items-center gap-2">
                 <div className="flex flex-col justify-center items-center md:flex-row md:gap-5">
                   <div className="text-center flex flex-col justify-center items-center gap-8">
                     <div className="flex flex-col font-thin text-sm justify-center items-center ">
+                      <div className="flex flex-col justify-center items-center p-2">
+                        <TransferIcon width="50" height="50" color="white" />
+                        <h1 className="font-thin text-xl">
+                          Vas a transferir a:
+                        </h1>
+                      </div>
+
                       <img
                         className="border w-16 h-16 rounded-full"
                         src={filteredEmployees.image}

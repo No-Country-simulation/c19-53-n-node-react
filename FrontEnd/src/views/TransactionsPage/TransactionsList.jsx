@@ -40,7 +40,7 @@ const TransactionsList = () => {
     <>
       <div>
         <div>
-          <div className="bg-violet-500 h-60 w-full rounded-b-lg shadow-violet-400 ">
+          <div className="bg-violet-500  h-60 w-full rounded-b-lg text-white ">
             {/* AVATAR */}
             <div className="flex justify-end p-4">
               <button className="md:pr-20">
@@ -48,8 +48,8 @@ const TransactionsList = () => {
               </button>
             </div>
             {/* EMPLEADOS */}
-            <div className="flex justify-center mt-3 md:mt-0 text-white ">
-              <div className="bg-black w-80 md:w-7/12 h-52 rounded-2xl shadow-black shadow-md flex flex-col justify-center items-center gap-2">
+            <div className="flex justify-center mt-3 md:mt-0  ">
+              <div className="bg-violet-500 w-full  flex flex-col justify-center items-center gap-2">
                 <div className="flex flex-col justify-center items-center md:flex-row md:gap-5">
                   <div className="text-center flex flex-col justify-center items-center">
                     <TransferIcon width="50" height="50" color="white" />
@@ -62,9 +62,9 @@ const TransactionsList = () => {
               </div>
             </div>
 
-            <div className="p-4  flex flex-col gap-4 md:flex-row justify-center  ">
+            <div className="p-4  bg-violet-500 flex flex-col gap-4 md:flex-row justify-center ">
               {/* EMPLEADOS */}
-              <div className="p-2 rounded-md  shadow-md shadow-gray-800 w-full md:w-3/5">
+              <div className="p-2 rounded-md  w-full md:w-3/5">
                 <div className="flex justify-center p-5">
                   <input
                     type="email"
