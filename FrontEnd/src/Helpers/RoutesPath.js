@@ -18,5 +18,5 @@ export const ROUTES = {
   EMPLOYEE_PROFILE: "/employeeprofile/:id",
   EDIT_EMPLOYEE: "/editemployee/:id",
   ACTIVITY: "/activity",
-  ACTIVITY_DETAIL: "/activitydetail",
+  ACTIVITY_DETAIL: "/activitydetail/:id",
 };

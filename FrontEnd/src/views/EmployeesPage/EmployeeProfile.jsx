@@ -4,6 +4,7 @@ import CancelDeleteIcon from "../assets/svg/CancelDeleteIcon";
 import EditIcon from "../assets/svg/EditIcon";
 import TransferIcon from "../assets/svg/TransferIcon";
 import ProfileIcon from "../assets/svg/ProfileIcon";
+import ReturnIcon from "../assets/svg/ReturnIcon";
 import { Link } from "react-router-dom";
 
 import { useParams } from "react-router-dom";
@@ -108,6 +109,13 @@ const EmployeeProfile = () => {
                         >
                           <TransferIcon width="30" height="30" color="white" />
                           <p>Transferir</p>
+                        </Link>
+                        <Link
+                          to={`/employeelist`}
+                          className="font-thin flex flex-col justify-center items-center"
+                        >
+                          <ReturnIcon width="30" height="30" color="white" />
+                          <p>Volver</p>
                         </Link>
                       </div>
                     </div>

@@ -37,6 +37,43 @@ const Home2 = () => {
       CBU: "333333333333",
     },
   ];
+
+  const Tranfers = [
+    {
+      id: 1,
+      name: "Clara Rodriguez",
+      document: "33.657.127",
+      position: "Puesto",
+      image: "/Employee1.jpg",
+      bank: "Banco1",
+      CBU: "1111111111111",
+      total: "$100",
+      date: "12/12/2021",
+    },
+    {
+      id: 2,
+      name: "Julia Alvarez",
+      document: "34.587.647",
+      position: "Puesto",
+      image: "/Employee2.jpg",
+      bank: "Banco2",
+      CBU: "222222222",
+      total: "$200",
+      date: "28/07/2024",
+    },
+    {
+      id: 3,
+      name: "Juan Perez",
+      document: "32.497.666",
+      position: "Puesto",
+      image: "/Employee3.jpg",
+      bank: "Banco3",
+      CBU: "333333333333",
+      total: "$300",
+      date: "15/03/2022",
+    },
+  ];
+
   return (
     <>
       <div>
@@ -109,80 +146,38 @@ const Home2 = () => {
               <div className="p-2 rounded-md  shadow-md shadow-gray-800 w-full md:w-96">
                 <div className="flex justify-between p-5">
                   <h1>Mi actividad</h1>
-                  <a href="">Ver Todo</a>
+                  <a href="/activity">Ver Todo</a>
                 </div>
                 <div className="p-2">
                   <ul className="flex flex-col gap-2">
-                    <li className="border rounded-md p-2">
-                      <div className="flex justify-between">
-                        <button className="flex items-center gap-3">
-                          <img
-                            src="/Face1.jpg"
-                            alt=""
-                            className="border w-16 h-16 rounded-full"
-                          />
-                          <div className="text-center">
-                            <p>Nombre</p>
-                            <p>Nombre</p>
-                          </div>
-                        </button>
+                    {Tranfers.map((transfer) => (
+                      <Link to={`/activitydetail/${transfer.id}`}>
+                        <li key={transfer.id} className="border rounded-md p-2">
+                          <div className="flex justify-between">
+                            <div className="flex justify-center items-center gap-2">
+                              <img
+                                src={transfer.image}
+                                alt=""
+                                className="border w-16 h-16 rounded-full"
+                              />
+                              <div className="text-center">
+                                <p>{transfer.name}</p>
+                                <p>{transfer.document}</p>
+                              </div>
+                            </div>
 
-                        <div className="flex flex-col justify-center items-center p-2">
-                          <div>
-                            <p>$100</p>
+                            <div className="flex flex-col justify-center items-center p-2">
+                              <div>
+                                <p>{transfer.total}</p>
+                              </div>
+                              <div>
+                                <p>{transfer.date}</p>
+                              </div>
+                            </div>
                           </div>
-                          <div>
-                            <p>Fecha</p>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="border rounded-md p-2">
-                      <div className="flex justify-between">
-                        <button className="flex items-center gap-3">
-                          <img
-                            src="/Face3.jpg"
-                            alt=""
-                            className="border w-16 h-16 rounded-full"
-                          />
-                          <div className="text-center">
-                            <p>Nombre</p>
-                            <p>Nombre</p>
-                          </div>
-                        </button>
-                        <div className="flex flex-col justify-center items-center p-2">
-                          <div>
-                            <p>$100</p>
-                          </div>
-                          <div>
-                            <p>Fecha</p>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="border rounded-md p-2">
-                      <div className="flex justify-between">
-                        <button className="flex items-center gap-3">
-                          <img
-                            src="/Face2.jpg"
-                            alt=""
-                            className="border w-16 h-16 rounded-full"
-                          />
-                          <div className="text-center">
-                            <p>Nombre</p>
-                            <p>Nombre</p>
-                          </div>
-                        </button>
-                        <div className="flex flex-col justify-center items-center p-2">
-                          <div>
-                            <p>$100</p>
-                          </div>
-                          <div>
-                            <p>Fecha</p>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
+                        </li>
+                      </Link>
+                    ))}
                   </ul>
                 </div>
               </div>
