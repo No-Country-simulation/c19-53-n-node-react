@@ -3,6 +3,7 @@ const express = require("express");
 
 const userRoutes = require("./routes/userRoutes.js");
 const companyRoutes = require("./routes/companyRoutes.js");
+const transactionRoutes = require("./routes/transactionRoutes.js");
 const server = express();
 require("./db/dbConnection.js");
 
@@ -27,16 +28,16 @@ server.use(
 
 server.use("/api", userRoutes);
 server.use("/api", companyRoutes);
+server.use("/api", transactionRoutes);
 
 server.use((err, req, res, next) => {
-  // eslint-disable-line no-unused-vars
   const status = err.status || 500;
   const message = err.message || err;
   console.error(err);
   res.status(status).send(message);
 });
 
-const connectDB = require("../src/db/dbConnection");
+const connectDB = require("./db/dbConnection");
 const { PORT } = process.env;
 
 connectDB();
@@ -46,3 +47,4 @@ server.listen(PORT, () => {
 });
 
 module.exports = server;
+
