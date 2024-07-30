@@ -1,6 +1,6 @@
 import React from "react";
 import BottomBar from "../components/BottomBar";
-import NotificationsBell from "../assets/svg/NotificationsBell";
+
 import TransferIcon from "../assets/svg/TransferIcon";
 import EditIcon from "../assets/svg/EditIcon";
 import EmployeesIcon from "../assets/svg/EmployeesIcon";
@@ -58,31 +58,24 @@ const EmployeesList = () => {
             </div>
 
             <div className="  flex flex-col gap-4 md:flex-row justify-center  bg-black">
-              {/* EMPLEADOS */}
-              <div className="p-2 rounded-md  shadow-md  w-full md:w-3/5">
-                <div className="flex justify-center p-5">
-                  <input
-                    type="email"
-                    placeholder={"Busca tu empleado"}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
-                  />
-                </div>
+              <div className="p-2 rounded-md   w-full md:w-3/5">
                 {/* AGREGAR EMPLEADOS */}
-                <div className="p-2 bg-black text-white">
+                <div className="p-2 bg-black text-white pt-5">
                   <ul className="flex flex-col gap-2">
                     <li className="border rounded-md p-2">
                       <div className="flex justify-center w-full">
-                        <Link className="flex items-center justify-between gap-3 w-full">
+                        <Link
+                          to={"/addemployee"}
+                          className="flex items-center justify-between gap-3 w-full"
+                        >
                           <EmployeesIcon width="50" height="50" color="white" />
                           <div className="flex justify-center items-center gap-5 p-2">
                             <div className="text-center">
                               <p> Agregar nuevo empleado</p>
                             </div>
-                            <Link>
+                            <div>
                               <AddIcon width="40" height="40" color="white" />
-                            </Link>
+                            </div>
                           </div>
                         </Link>
                       </div>
