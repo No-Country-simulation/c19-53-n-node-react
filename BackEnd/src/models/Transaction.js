@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema({
-    tipo: { 
-        type: String, 
-        enum: ['depósito', 'retiro', 'transferencia'], 
-        required: true 
-    },
     monto: { 
         type: Number, 
         required: true 
