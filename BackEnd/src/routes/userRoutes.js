@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const login = require("../controllers/User/login");
+const userlogin = require("../controllers/User/loginUser");
 const getUserByDocument = require("../controllers/User/getUserByDocument");
 const getAllUsers = require("../controllers/User/getAllUsers");
 const createUser = require("../controllers/Company/createUser");
@@ -16,6 +16,6 @@ router.get("/userbyid/:id", getUserById); //ruta para obtener un usuario por id
 router.get("/users", getAllUsers);
 router.put("/user/:id", updateUser);
 router.delete("/user/:id", deleteUser);
-router.post("/login", login);
+router.post("/user/login", userlogin);
 
 module.exports = router;
