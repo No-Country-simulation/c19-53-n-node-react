@@ -30,10 +30,11 @@ export const TestProvider = ({ children }) => {
     }
   }
 
-  const logout = () => {
+  const logout = (navigate) => {
     setCompany(null);
     localStorage.removeItem('compány');
     Swal.fire('Success', 'Logged out successfully!', 'success');
+      navigate('/')
   }
 
   useEffect(() => {
