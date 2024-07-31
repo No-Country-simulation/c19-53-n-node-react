@@ -1,46 +1,31 @@
-import { EmailInput } from "../../components/InputComponents/EmailInput";
-import { PasswordInput } from "../../components/InputComponents/PasswordInput";
+
 import ConfirmationButton from "../../components/InputComponents/ConfirmationButton";
 import SignInBanner from "../../assets/svg/SignInBanner";
 import Footer from "../../components/Footer";
 import NavExample from "../../components/InputComponents/NavExample";
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from "react";
-import {  userLoginAct } from '../../redux/actions/userActions'
-import { clearUsers } from "../../redux/reducers/userSlice";
+import { useEffect, useState, useContext } from "react";
+import {ROUTES} from '../../Helpers/RoutesPath'
+
+import { TestContext } from "../../context/testContext";
 
 
 export default function Login() {
+  const { login } = useContext(TestContext);
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { user, auth } = useSelector((state) => state.userState);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() =>{
-    if (auth || isAuthenticated){
-      const timeoutId = setTimeout(()=>{
-        navigate('/home');
-        dispatch(clearUsers());
-      }, 2000)
-      return () => clearTimeout(timeoutId);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const success = await login(credentials);
+    if (success){
+      setTimeout(() => {
+        navigate(ROUTES.HOME);
+      }, 3000);
     }
-  },[auth, isAuthenticated, navigate, dispatch])
-
-
-
-  const handleLogin = async () => {
-    const result = await dispatch(userLoginAct({email, password}))
-    if (result?.payload?.auth) {
-      setIsAuthenticated(true)
-    }
-     
+    
   }
-
-  
 
   return (
     <div>
@@ -66,6 +51,7 @@ export default function Login() {
 
         {/* Form */}
         <div className="mt-10 mb-10 flex flex-col gap-6 items-center bg-slate-50 p-8 rounded-lg drop-shadow w-full sm:max-w-lg">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 justify-center items-center">
           <div className="flex flex-col gap-5">
             <div>
               <p className="text-center text-gray-500">
@@ -82,8 +68,8 @@ export default function Login() {
                 <input
                     type="email"
                     placeholder={"Ingrese su correo electrónico"}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={credentials.email}
+                    onChange={(e) => setCredentials( {...credentials, email: e.target.value})}
                     required
                     className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
                 />
@@ -92,8 +78,8 @@ export default function Login() {
                 <input
                     type="password"
                     placeholder={"Ingrese su contraseña"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={credentials.password}
+                    onChange={(e) => setCredentials( {...credentials, password: e.target.value})}
                     className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
                     required
                 />
@@ -101,8 +87,9 @@ export default function Login() {
             <a href="#" className="text-indigo-600">
               ¿Olvidaste tu contraseña?
             </a>
-            <ConfirmationButton name={"Iniciar Sesión"} onClick={ handleLogin } />
+            <ConfirmationButton name={"Iniciar Sesión"} type='submit' />
           </div>
+            </form>
         </div>
       </div>
       <Footer />
