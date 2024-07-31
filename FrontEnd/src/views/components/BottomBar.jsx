@@ -40,12 +40,14 @@ const BottomBar = () => {
             href="#"
             class="w-full focus:text-violet-800 hover:text-violet-800 justify-center inline-block text-center pt-2 pb-1"
           >
-            <div className="flex justify-center items-center">
-              <StatsIcon width="40" height="40" color={"white"} />
-            </div>
-            <span class="tab tab-whishlist block text-xs text-white">
-              Mi Actividad
-            </span>
+            <Link to={"/activity"}>
+              <div className="flex justify-center items-center">
+                <StatsIcon width="40" height="40" color={"white"} />
+              </div>
+              <span class="tab tab-whishlist block text-xs text-white">
+                Mi Actividad
+              </span>
+            </Link>
           </a>
         </div>
       </section>

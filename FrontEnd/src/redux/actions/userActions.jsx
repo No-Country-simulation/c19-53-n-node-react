@@ -19,7 +19,7 @@ export const userLoginAct = (user) => async (dispatch) => {
     });
     
     try {
-        const response = await axios.post('http://localhost:3001/api/login', user, {
+        const response = await axios.post('api/company/login', user, {
             withCredentials: true
         });
 

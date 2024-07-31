@@ -4,6 +4,7 @@ import CancelDeleteIcon from "../assets/svg/CancelDeleteIcon";
 import EditIcon from "../assets/svg/EditIcon";
 import TransferIcon from "../assets/svg/TransferIcon";
 import ProfileIcon from "../assets/svg/ProfileIcon";
+import ReturnIcon from "../assets/svg/ReturnIcon";
 import { Link } from "react-router-dom";
 
 import { useParams } from "react-router-dom";
@@ -48,7 +49,7 @@ const EmployeeProfile = () => {
     <>
       <div>
         <div>
-          <div className="bg-black h-60 w-full rounded-b-lg">
+          <div className="bg-black flex flex-col justify-center h-screen w-full rounded-b-lg">
             {/* AVATAR */}
             <div className="flex justify-end p-4">
               <button className="md:pr-20"></button>
@@ -88,7 +89,7 @@ const EmployeeProfile = () => {
                     <div>
                       <div className="flex gap-10">
                         <Link
-                          to="/edit-employee"
+                          to={`/editemployee/${filteredEmployees.id}`}
                           className="font-thin flex flex-col justify-center items-center"
                         >
                           <EditIcon width="30" height="30" color="white" />
@@ -108,6 +109,13 @@ const EmployeeProfile = () => {
                         >
                           <TransferIcon width="30" height="30" color="white" />
                           <p>Transferir</p>
+                        </Link>
+                        <Link
+                          to={`/employeelist`}
+                          className="font-thin flex flex-col justify-center items-center"
+                        >
+                          <ReturnIcon width="30" height="30" color="white" />
+                          <p>Volver</p>
                         </Link>
                       </div>
                     </div>

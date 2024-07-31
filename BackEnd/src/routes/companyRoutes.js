@@ -5,6 +5,7 @@ const createUser = require("../controllers/Company/createUser");
 const getAllCompanies = require("../controllers/Company/getAllCompanies");
 const deleteCompany = require("../controllers/Company/deleteCompany");
 const getEmployeesByCompany = require("../controllers/Company/getEmployeesByCompany");
+const companylogin = require("../controllers/Company/loginCompany");
 
 const router = Router();
 
@@ -13,5 +14,6 @@ router.post("/companies/:companyId/users", createUser);
 router.delete("/company/:id", deleteCompany);
 router.get("/companies", getAllCompanies);
 router.get("/usersbycompany/:companyId", getEmployeesByCompany);
+router.post("/company/login",companylogin);
 
 module.exports = router;
