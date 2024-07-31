@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import BottomBar from "../components/BottomBar";
 import NotificationsBell from "../assets/svg/NotificationsBell";
 import PaymentCardIcon from "../assets/svg/PaymentCardIcon";
 import AddMoneyIcon from "../assets/svg/AddMoneyIcon";
 import TransferIcon from "../assets/svg/TransferIcon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo2 from "../assets/svg/Logo2";
+import {TestContext, TestProvider} from '../../context/testContext'
 
 const Home2 = () => {
+  const {company, logout} = useContext(TestContext)
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout(navigate);
+  };
+
   const Employees = [
     {
       id: 1,
@@ -90,12 +98,12 @@ const Home2 = () => {
                   <img className="w-10 rounded-full " src="/Face1.jpg" alt="" />
                 </div>
                 <div className="font-thin text-xs text-white text-center">
-                  <h1>Buenvenido</h1>
-                  <h2>TechSolutions Inc</h2>
+                  <h1>Bienvenido</h1>
+                  <h2>{company.name}</h2>
                 </div>
               </div>
 
-              <button className="md:pr-20">
+              <button className="md:pr-20" onClick={handleLogout}>
                 <NotificationsBell width="30" height="30" color="white" />
               </button>
             </div>
