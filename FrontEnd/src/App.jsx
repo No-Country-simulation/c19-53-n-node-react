@@ -14,7 +14,7 @@ import Landing from "./views/LandingPage/Landing";
 import TransactionsList from "./views/TransactionsPage/TransactionsList";
 import CreateTransaction from "./views/TransactionsPage/CreateTransaction";
 import CheckIn from "./views/TransactionsPage/CheckIn";
-import { useAuth } from "./components/authContext/authContext";
+
 
 import EmployeeList from "./views/EmployeesPage/EmployeesList";
 import AddEmployee from "./views/EmployeesPage/AddEmployee";
@@ -28,9 +28,7 @@ import UserProfile from "./views/UserProfile/UserProfile";
 import MenuHome from "./components/MenuHome/MenuHome";
 
 function App() {
-  const { isAuthenticated } = useAuth();
-
-  console.log("isAuthenticated", isAuthenticated);
+  
 
   return (
     <TestProvider>
