@@ -1,9 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import BottomBar from "../components/BottomBar";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { TestContext } from "../../context/testContext";
 
 const AddEmployee = () => {
+  const context = useContext(TestContext);
+  if (!context) {
+    throw new Error("useTestContext must be used within a TestProvider");
+  }
+  const { company, createEmployee } = useContext(TestContext);
+
   const { register, handleSubmit } = useForm();
   return (
     <div className="bg-black h-full md:h-screen flex md:flex-row flex-col items-center justify-center gap-7 text  pb-20">
@@ -12,7 +19,22 @@ const AddEmployee = () => {
         <h1 className="text-white">Nuevo Empleado</h1>
       </div>
       <div className="p-5">
-        <form className="  flex flex-col gap-3 items-center text-white  rounded-lg drop-shadow w-full sm:max-w-lg">
+        <form
+          onSubmit={handleSubmit(async (data) => {
+            console.log(data);
+            if (company?._id) {
+              try {
+                await createEmployee(company._id, data);
+                alert("Usuario creado con éxito");
+              } catch (error) {
+                alert("Error al crear el usuario");
+              }
+            } else {
+              alert("No se ha seleccionado una empresa");
+            }
+          })}
+          className="  flex flex-col gap-3 items-center text-white  rounded-lg drop-shadow w-full sm:max-w-lg"
+        >
           <div>
             <label className="block text-sm font-thin leading-6 text-white">
               Nombre y Apellido
@@ -75,6 +97,32 @@ const AddEmployee = () => {
                 placeholder={"Ingrese el Email"}
                 className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
                 {...register("email", { required: true })}
+              />
+            </div>
+          </div>
+          <div>
+            <label className="block text-sm font-thin leading-6 text-white">
+              PassWord
+            </label>
+            <div className="relative  rounded-md shadow-sm">
+              <input
+                type="text"
+                placeholder={"Ingrese el Email"}
+                className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
+                {...register("password", { required: true })}
+              />
+            </div>
+          </div>
+          <div>
+            <label className="block text-sm font-thin leading-6 text-white">
+              Cargo
+            </label>
+            <div className="relative  rounded-md shadow-sm">
+              <input
+                type="text"
+                placeholder={"Ingrese el Email"}
+                className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
+                {...register("role", { required: true })}
               />
             </div>
           </div>

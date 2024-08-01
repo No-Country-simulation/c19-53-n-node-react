@@ -6,8 +6,13 @@ import AddMoneyIcon from "../assets/svg/AddMoneyIcon";
 import TransferIcon from "../assets/svg/TransferIcon";
 import { Link } from "react-router-dom";
 import Logo2 from "../assets/svg/Logo2";
+import { useContext } from "react";
+import { TestContext } from "../../context/testContext";
 
 const Home2 = () => {
+  const { company } = useContext(TestContext);
+  console.log(company);
+
   const Employees = [
     {
       id: 1,
@@ -18,6 +23,7 @@ const Home2 = () => {
       bank: "Banco1",
       CBU: "1111111111111",
     },
+
     {
       id: 2,
       name: "Julia Alvarez",

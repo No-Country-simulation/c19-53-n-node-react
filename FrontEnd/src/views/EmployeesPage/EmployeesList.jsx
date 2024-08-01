@@ -1,43 +1,37 @@
 import React from "react";
 import BottomBar from "../components/BottomBar";
-
 import TransferIcon from "../assets/svg/TransferIcon";
 import EditIcon from "../assets/svg/EditIcon";
 import EmployeesIcon from "../assets/svg/EmployeesIcon";
-
 import { Link } from "react-router-dom";
 import AddIcon from "../TransactionsPage/AddIcon";
+import { useContext, useEffect, useState } from "react";
+import { TestContext } from "../../context/testContext";
 
 const EmployeesList = () => {
-  const Employees = [
-    {
-      id: 1,
-      name: "Clara Rodriguez",
-      document: "33.657.127",
-      position: "Puesto",
-      image: "/Employee1.jpg",
-      bank: "Banco1",
-      CBU: "1111111111111",
-    },
-    {
-      id: 2,
-      name: "Julia Alvarez",
-      document: "34.587.647",
-      position: "Puesto",
-      image: "/Employee2.jpg",
-      bank: "Banco2",
-      CBU: "222222222",
-    },
-    {
-      id: 3,
-      name: "Juan Perez",
-      document: "32.497.666",
-      position: "Puesto",
-      image: "/Employee3.jpg",
-      bank: "Banco3",
-      CBU: "333333333333",
-    },
-  ];
+  const context = useContext(TestContext);
+  if (!context) {
+    throw new Error("useTestContext must be used within a TestProvider");
+  }
+  const { company, getEmployees } = useContext(TestContext);
+
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    if (company?._id) {
+      getEmployees(company._id).then((res) => {
+        setEmployees(res.data);
+        console.log(res.data);
+      });
+    } else {
+      console.log("No company");
+    }
+  }, [company]);
+
+  console.log(employees);
+
+  const Employees = employees;
+
   return (
     <>
       <div>
@@ -82,29 +76,43 @@ const EmployeesList = () => {
                     </li>
                     {/* LISTA DE EMPLEADOS */}
                     {Employees.map((employee) => (
-                      <li key={employee.id} className="border rounded-md p-2">
+                      <li
+                        key={employee._id && employee._id}
+                        className="border rounded-md p-2"
+                      >
                         <div className="flex justify-center w-full">
                           <Link
-                            to={`/employeeprofile/${employee.id}`}
+                            to={`/employeeprofile/${
+                              company?._id && employee._id
+                            }`}
                             className="flex items-center justify-between gap-3 w-full"
                           >
                             <img
-                              src={employee.image}
+                              src=""
                               alt=""
                               className="border w-16 h-16 rounded-full"
                             />
                             <div className="flex justify-center items-center gap-5 p-2">
                               <div className="text-center">
-                                <p>{employee.name}</p>
+                                <p>{employee.name && employee.name}</p>
                               </div>
-                              <Link to={`/editemployee/${employee.id}`}>
+                              <Link
+                                to={`/editemployee/${
+                                  employee._id && employee._id
+                                }`}
+                              >
                                 <EditIcon
                                   width="40"
                                   height="40"
                                   color="white"
                                 />
                               </Link>
-                              <Link to={`/createtransaction/${employee.id}`}>
+
+                              <Link
+                                to={`/createtransaction/${
+                                  employee._id && employee._id
+                                }`}
+                              >
                                 <TransferIcon
                                   width="40"
                                   height="40"
