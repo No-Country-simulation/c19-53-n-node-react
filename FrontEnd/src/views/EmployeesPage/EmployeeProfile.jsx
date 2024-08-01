@@ -6,19 +6,21 @@ import TransferIcon from "../assets/svg/TransferIcon";
 import ProfileIcon from "../assets/svg/ProfileIcon";
 import ReturnIcon from "../assets/svg/ReturnIcon";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useContext, useEffect, useState } from "react";
 import { TestContext } from "../../context/testContext";
 import { useParams } from "react-router-dom";
 
 const EmployeeProfile = () => {
+  const navigate = useNavigate();
   const param = useParams();
   const [user, setUser] = useState({});
   const context = useContext(TestContext);
   if (!context) {
     throw new Error("useTestContext must be used within a TestProvider");
   }
-  const { getUserById } = context;
+  const { getUserById, deleteUser } = context;
 
   useEffect(() => {
     async function loadUser() {
@@ -77,14 +79,33 @@ const EmployeeProfile = () => {
                           <EditIcon width="30" height="30" color="white" />
                           <p>Editar</p>
                         </Link>
-                        <Link className="font-thin flex flex-col justify-center items-center">
+
+                        <button
+                          onClick={async () => {
+                            try {
+                              const res = await deleteUser(param.id);
+                              if (res.status === 200) {
+                                alert("Usuario eliminado exitosamente");
+                                navigate("/employeelist");
+                              }
+                            } catch (error) {
+                              // const res = await getUsers();
+                              // setUsers(res.data);
+
+                              console.error(error);
+                              alert("Error al eliminar usuario");
+                            }
+                          }}
+                          className="font-thin flex flex-col justify-center items-center"
+                        >
                           <CancelDeleteIcon
                             width="30"
                             height="30"
                             color="white"
                           />
                           <p>Eliminar</p>
-                        </Link>
+                        </button>
+
                         <Link
                           to={`/createtransaction/${param.id}`}
                           className="font-thin flex flex-col justify-center items-center"

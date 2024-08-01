@@ -21,8 +21,9 @@ const AddEmployee = () => {
       <div className="p-5">
         <form
           onSubmit={handleSubmit(async (data) => {
-            console.log(data);
+            alert(data.toString());
             if (company?._id) {
+              console.log(company._id);
               try {
                 await createEmployee(company._id, data);
                 alert("Usuario creado con éxito");
