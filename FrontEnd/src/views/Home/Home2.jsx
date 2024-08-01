@@ -99,7 +99,7 @@ const Home2 = () => {
                 </div>
                 <div className="font-thin text-xs text-white text-center">
                   <h1>Bienvenido</h1>
-                  <h2>{company.name}</h2>
+                  <h2>{company ? company.name : "Cargando..."}</h2>
                 </div>
               </div>
 

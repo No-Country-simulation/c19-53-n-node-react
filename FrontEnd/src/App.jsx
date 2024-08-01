@@ -1,5 +1,5 @@
 import { ROUTES } from "./Helpers/RoutesPath";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "./views/LandingPage/Landing";
 import CreateAccount from "./views/Registration/CreateAccount";
 import Home2 from "./views/Home/Home2";
@@ -9,11 +9,12 @@ import AdminHome from "./admin/AdminHome";
 import AdminAddUser from "./admin/AdminAddUser";
 import AdminListUsers from "./admin/AdminListUsers";
 import AdminEditUser from "./admin/AdminEditUser";
-import { TestProvider } from "./context/testContext";
+import { TestContext, TestProvider } from "./context/testContext";
 import Landing from "./views/LandingPage/Landing";
 import TransactionsList from "./views/TransactionsPage/TransactionsList";
 import CreateTransaction from "./views/TransactionsPage/CreateTransaction";
 import CheckIn from "./views/TransactionsPage/CheckIn";
+
 
 
 import EmployeeList from "./views/EmployeesPage/EmployeesList";
@@ -26,9 +27,11 @@ import ActivityDetail from "./views/ActivityPage/ActivityDetail";
 
 import UserProfile from "./views/UserProfile/UserProfile";
 import MenuHome from "./components/MenuHome/MenuHome";
+import { useContext } from "react";
 
 function App() {
-  
+  // const {isAuthenticated} = useContext(TestContext)
+
 
   return (
     <TestProvider>
@@ -42,7 +45,9 @@ function App() {
             path={ROUTES.CREATEACCOUNT}
             element={<CreateAccount />}
           />
-          <Route exact path={ROUTES.LOGIN} element={<Login />} />
+          {/* <Route exact path={ROUTES.LOGIN} element={isAuthenticated ? <Navigate to={ROUTES.HOME} /> : <Login />} /> */}
+          {/* <Route exact path={ROUTES.LOGIN} element={isAuthenticated ? <Login /> : <Navigate to={ROUTES.HOME} />} /> */}
+          <Route exact path={ROUTES.LOGIN} element={<Login/>} />
           <Route exact path={ROUTES.ADMIN_LOGIN} element={<AdminLogin />} />
 
           {/*Rutas protegidas */}
