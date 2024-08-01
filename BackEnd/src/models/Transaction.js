@@ -9,12 +9,12 @@ const transactionSchema = new mongoose.Schema({
         type: Date, 
         default: Date.now 
     },
-    usuarioEmisor: { 
+    emisor: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Company',
         required: true 
     },
-    usuarioReceptor: { 
+    receptor: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User',
         required: true
