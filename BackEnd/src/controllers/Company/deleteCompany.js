@@ -2,8 +2,6 @@ const CompanyModel = require('../../models/Company');
 
 const deleteCompany = async (req, res) => {
     
-    const { id } = req.params;
-    
     try {
         const deletedCompany = await CompanyModel.findByIdAndDelete(req.params.id);
         
