@@ -4,7 +4,15 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
 export const TestContext = createContext({
-  company: {name: ''},
+  company: {
+    _id: '',
+    name: '',
+    legalDocument: '',
+    email: '',
+    balance: 0,
+    __v: 0,
+
+  },
   logout: () => {},
 });
 
@@ -50,6 +58,7 @@ export const TestProvider = ({ children }) => {
     if(storedCompany) {
       setCompany(JSON.parse(storedCompany));
       setIsAuthenticated(true)
+      console.log('QUE TRAE COMPANY',company);
     }
     setLoading(false)
   }, []);
