@@ -75,55 +75,46 @@ const EmployeesList = () => {
                       </div>
                     </li>
                     {/* LISTA DE EMPLEADOS */}
-                    {Employees.map((employee) => (
-                      <li
-                        key={employee._id && employee._id}
-                        className="border rounded-md p-2"
-                      >
-                        <div className="flex justify-center w-full">
-                          <Link
-                            to={`/employeeprofile/${
-                              company?._id && employee._id
-                            }`}
-                            className="flex items-center justify-between gap-3 w-full"
-                          >
-                            <img
-                              src=""
-                              alt=""
-                              className="border w-16 h-16 rounded-full"
-                            />
-                            <div className="flex justify-center items-center gap-5 p-2">
-                              <div className="text-center">
-                                <p>{employee.name && employee.name}</p>
-                              </div>
-                              <Link
-                                to={`/editemployee/${
-                                  employee._id && employee._id
-                                }`}
-                              >
-                                <EditIcon
-                                  width="40"
-                                  height="40"
-                                  color="white"
-                                />
-                              </Link>
+                    {Employees &&
+                      Employees.map((employee) => (
+                        <li
+                          key={employee._id}
+                          className="border rounded-md p-2"
+                        >
+                          <div className="flex justify-center w-full">
+                            <Link
+                              to={`/employeeprofile/${employee._id}`}
+                              className="flex items-center justify-between gap-3 w-full"
+                            >
+                              <img
+                                src=""
+                                alt=""
+                                className="border w-16 h-16 rounded-full"
+                              />
+                              <div className="flex justify-center items-center gap-5 p-2">
+                                <div className="text-center">
+                                  <p>{employee.name}</p>
+                                </div>
+                                <Link to={`/editemployee/${employee._id}`}>
+                                  <EditIcon
+                                    width="40"
+                                    height="40"
+                                    color="white"
+                                  />
+                                </Link>
 
-                              <Link
-                                to={`/createtransaction/${
-                                  employee._id && employee._id
-                                }`}
-                              >
-                                <TransferIcon
-                                  width="40"
-                                  height="40"
-                                  color="white"
-                                />
-                              </Link>
-                            </div>
-                          </Link>
-                        </div>
-                      </li>
-                    ))}
+                                <Link to={`/createtransaction/${employee._id}`}>
+                                  <TransferIcon
+                                    width="40"
+                                    height="40"
+                                    color="white"
+                                  />
+                                </Link>
+                              </div>
+                            </Link>
+                          </div>
+                        </li>
+                      ))}
                   </ul>
                 </div>
               </div>
