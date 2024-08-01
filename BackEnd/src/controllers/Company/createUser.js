@@ -3,7 +3,7 @@ const CompanyModel = require('../../models/Company');
 const bcrypt = require("bcrypt")
 
 const createUser = async (req, res) => {
-    const {name, email, password, document, role } = req.body
+    const {name, email, password, document, role, bankAccountNumber, bankName } = req.body
     const { companyId } = req.params;
 
     try {
@@ -33,7 +33,9 @@ const createUser = async (req, res) => {
             password: hashedPassword,
             document,
             role,
-            companyId
+            companyId,
+            bankName,
+            bankAccountNumber
         });
 
         await newUser.save()
@@ -43,6 +45,8 @@ const createUser = async (req, res) => {
             email : newUser.email,
             document: newUser.document,
             role: newUser.role,
+            bankName: newUser.bankName,
+            bankAccountNumber: bankAccountNumber,
             companyId: newUser.companyId
         });
 

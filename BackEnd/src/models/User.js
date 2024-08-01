@@ -16,9 +16,11 @@ const userSchema = new mongoose.Schema({
     },
     bankName: { 
         type: String, 
+        required: true,
     },
     bankAccountNumber: { 
         type: String, 
+        required: true,
     },
     email: { 
         type: String, 
@@ -31,7 +33,6 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['empleado', 'administrador'],
         required: true 
     },
     companyId: {
