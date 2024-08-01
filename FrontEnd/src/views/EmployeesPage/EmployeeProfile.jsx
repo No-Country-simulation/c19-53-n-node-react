@@ -7,43 +7,32 @@ import ProfileIcon from "../assets/svg/ProfileIcon";
 import ReturnIcon from "../assets/svg/ReturnIcon";
 import { Link } from "react-router-dom";
 
+import { useContext, useEffect, useState } from "react";
+import { TestContext } from "../../context/testContext";
 import { useParams } from "react-router-dom";
 
 const EmployeeProfile = () => {
-  const Employees = [
-    {
-      id: 1,
-      name: "Clara Rodriguez",
-      document: "33.657.127",
-      position: "Puesto",
-      image: "/Employee1.jpg",
-      bank: "Banco1",
-      CBU: "1111111111111",
-    },
-    {
-      id: 2,
-      name: "Julia Alvarez",
-      document: "34.587.647",
-      position: "Puesto",
-      image: "/Employee2.jpg",
-      bank: "Banco2",
-      CBU: "222222222",
-    },
-    {
-      id: 3,
-      name: "Juan Perez",
-      document: "32.497.666",
-      position: "Puesto",
-      image: "/Employee3.jpg",
-      bank: "Banco3",
-      CBU: "333333333333",
-    },
-  ];
-  const employeeId = useParams();
-  const filteredEmployees = Employees.find(
-    (employee) => employee.id === parseInt(employeeId.id)
-  );
-  console.log(filteredEmployees);
+  const param = useParams();
+  const [user, setUser] = useState({});
+  const context = useContext(TestContext);
+  if (!context) {
+    throw new Error("useTestContext must be used within a TestProvider");
+  }
+  const { getUserById } = context;
+
+  useEffect(() => {
+    async function loadUser() {
+      if (param.id) {
+        const currentUser = await getUserById(param.id);
+        console.log(currentUser.data);
+        setUser(currentUser.data);
+      }
+    }
+
+    loadUser();
+  }, []);
+
+  console.log(user);
 
   return (
     <>
@@ -62,34 +51,27 @@ const EmployeeProfile = () => {
                     <div className="flex justify-center items-center gap-6">
                       {" "}
                       <ProfileIcon width="50" height="50" color="white" />
-                      <div>{filteredEmployees.name}</div>
+                      <div>{user.name}</div>
                     </div>
 
                     <div className="flex  font-thin text-sm justify-center items-center gap-10">
                       <img
                         className="border w-32 h-25 rounded-full"
-                        src={filteredEmployees.image}
+                        src="/Face1.jpg" //CAMBIAR
                         alt=""
                       />
                       <div className="flex flex-col gap-2">
+                        <p className="text-white">Cargo: {user.role}</p>
                         <p className="text-white">
-                          Cargo: {filteredEmployees.position}
+                          Identificación:{user.document}
                         </p>
-                        <p className="text-white">
-                          Identificación: {filteredEmployees.document}
-                        </p>
-                        <p className="text-white">
-                          Banco: {filteredEmployees.bank}
-                        </p>
-                        <p className="text-white">
-                          CBU: {filteredEmployees.CBU}
-                        </p>
+                        <p className="text-white">Email: {user.email}</p>
                       </div>
                     </div>
                     <div>
                       <div className="flex gap-10">
                         <Link
-                          to={`/editemployee/${filteredEmployees.id}`}
+                          to={`/editemployee/${param.id}`}
                           className="font-thin flex flex-col justify-center items-center"
                         >
                           <EditIcon width="30" height="30" color="white" />
@@ -104,7 +86,7 @@ const EmployeeProfile = () => {
                           <p>Eliminar</p>
                         </Link>
                         <Link
-                          to={`/createtransaction/${filteredEmployees.id}`}
+                          to={`/createtransaction/${param.id}`}
                           className="font-thin flex flex-col justify-center items-center"
                         >
                           <TransferIcon width="30" height="30" color="white" />

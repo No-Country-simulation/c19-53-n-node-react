@@ -6,6 +6,7 @@ import AddMoneyIcon from "../assets/svg/AddMoneyIcon";
 import TransferIcon from "../assets/svg/TransferIcon";
 import { Link, useNavigate } from "react-router-dom";
 import Logo2 from "../assets/svg/Logo2";
+
 import {TestContext, TestProvider} from '../../context/testContext'
 
 const Home2 = () => {
@@ -15,6 +16,7 @@ const Home2 = () => {
   const handleLogout = () => {
     logout(navigate);
   };
+
 
   const Employees = [
     {
@@ -26,6 +28,7 @@ const Home2 = () => {
       bank: "Banco1",
       CBU: "1111111111111",
     },
+
     {
       id: 2,
       name: "Julia Alvarez",
