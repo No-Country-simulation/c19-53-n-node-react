@@ -14,12 +14,10 @@ async function getEmployeesByCompany(req, res) {
 
     res.status(200).json(employees);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        error: "Error al obtener empleados por nombre de compañia",
-        details: error.message,
-      });
+    res.status(500).json({
+      error: "Error al obtener empleados por nombre de compañia",
+      details: error.message,
+    });
   }
 }
 
