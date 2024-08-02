@@ -87,7 +87,7 @@ const EmployeesList = () => {
                               className="flex items-center justify-between gap-3 w-full"
                             >
                               <img
-                                src=""
+                                src={employee.profileImage}
                                 alt=""
                                 className="border w-16 h-16 rounded-full"
                               />
