@@ -13,7 +13,7 @@ const router = Router();
 router.get("/userbydocument/:document", getUserByDocument);
 router.get("/userbyid/:id", getUserById); //ruta para obtener un usuario por id
 router.get("/users", getAllUsers);
-router.post("/users", createUser);
+router.post("/users/:companyId", createUser);
 router.post("/user/login", userlogin);
 router.put("/user/:id", updateUser);
 router.delete("/user/:id", deleteUser);
