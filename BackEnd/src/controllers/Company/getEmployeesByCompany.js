@@ -10,7 +10,7 @@ async function getEmployeesByCompany(req, res) {
             return res.status(404).json({ message: 'Compañia no encontrada' });
         }
 
-        const employees = await UserModel.find({ companyId, role: 'empleado' });
+        const employees = await UserModel.find({ companyId});
 
         res.status(200).json(employees);
     } catch (error) {
