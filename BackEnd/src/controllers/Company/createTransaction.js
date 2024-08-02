@@ -12,6 +12,10 @@ const createTransaction = async (req, res) => {
             return res.status(404).json({ message: 'Compañia no encontrada para realizar transaccion' });
         }
 
+        if (company.balance < monto) {
+            return res.status(400).json({message: 'Fondos insuficientes para realizar la transacción'})
+        }
+
         const usuarioReceptor = await UserModel.findById(receptorId);
         if (!usuarioReceptor) {
             return res.status(404).json({ message: 'Usuario no encontrado para realizar transaccion' });
@@ -22,6 +26,9 @@ const createTransaction = async (req, res) => {
             emisor: company._id,
             receptor: usuarioReceptor._id
         });
+
+        company.balance -= monto;
+        await company.save()
 
         await transaction.save();
 

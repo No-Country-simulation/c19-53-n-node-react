@@ -1,47 +1,53 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BottomBar from "../components/BottomBar";
 import NotificationsBell from "../assets/svg/NotificationsBell";
+import axios from "axios";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ConfirmationButton from "../components/ConfirmationButton";
 import { useParams } from "react-router-dom";
 import TransferIcon from "../assets/svg/TransferIcon";
+import { TestContext } from "../../context/testContext";
+import Swal from "sweetalert2";
 
 const CreateTransaction = () => {
-  const Employees = [
-    {
-      id: 1,
-      name: "Clara Rodriguez",
-      document: "33.657.127",
-      position: "Puesto",
-      image: "/Employee1.jpg",
-      bank: "Banco1",
-      CBU: "1111111111111",
-    },
-    {
-      id: 2,
-      name: "Julia Alvarez",
-      document: "34.587.647",
-      position: "Puesto",
-      image: "/Employee2.jpg",
-      bank: "Banco2",
-      CBU: "222222222",
-    },
-    {
-      id: 3,
-      name: "Juan Perez",
-      document: "32.497.666",
-      position: "Puesto",
-      image: "/Employee3.jpg",
-      bank: "Banco3",
-      CBU: "333333333333",
-    },
-  ];
-  const employeeId = useParams();
-  const filteredEmployees = Employees.find(
-    (employee) => employee.id === parseInt(employeeId.id)
-  );
-  console.log(filteredEmployees);
+  const {id } = useParams();
+  const { getEmployees, company } = useContext(TestContext)
+  const [ employee, setEmployee ] = useState(null)
+  const [monto, setMonto] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loadEmployee = async () => {
+      const response = await getEmployees(company._id);
+      const employees = response.data
+      const foundEmployee = employees.find((emp) => emp._id === id);
+      setEmployee(foundEmployee);
+    };
+    if (company) {
+      loadEmployee();
+    }
+  }, [id, company])
+
+  if (!employee) return <p>Cargando...</p>
+
+  const handleTransaction = async () => {
+    try {
+      const response = await axios.post(
+        `/api/transaction/${company._id}/${employee._id}`, 
+        { monto: parseFloat(monto) } // Asegúrate de enviar 'monto' como número
+      );
+      if (response.status === 201) {
+        navigate(`/checkin/${employee._id}`, { state: { employee, monto, fecha: new Date().toISOString() } });
+      }
+    } catch (error) {
+      console.error('Error details:', error.response ? error.response.data : error.message);
+      if (error.response && error.response.status === 400) {
+        Swal.fire("Error", error.response.data.message || "Error al realizar la transacción", "error");
+      }
+    }
+  };
+
 
   return (
     <>
@@ -62,24 +68,25 @@ const CreateTransaction = () => {
 
                     <img
                       className="border w-16 h-16 rounded-full"
-                      src={filteredEmployees.image}
-                      alt=""
+                      src={employee.image || '/Employee1.jpg'}
+                      alt={employee.name}
                     />
-                    <p className="text-white">{filteredEmployees.name}</p>
-                    <p className="text-white">{filteredEmployees.bank}</p>
-                    <p className="text-white">{filteredEmployees.CBU}</p>
+                    <p className="text-white">{employee.name}</p>
+                    <p className="text-white">{employee.bank}</p>
+                    <p className="text-white">{employee.CBU}</p>
                   </div>
 
                   <input
                     type="number"
                     placeholder={"Ingresa el monto a transferir"}
-                    onChange={(e) => console.log(e.target.value)}
+                    value={monto}
+                    onChange={(e) => setMonto(e.target.value)}
                     required
                     className="block w-72 rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-500 sm:text-sm sm:leading-6"
                   />
-                  <Link to={`/checkin/${filteredEmployees.id}`}>
-                    <ConfirmationButton name="Transferir" action="submit" />
-                  </Link>
+                  
+                    <ConfirmationButton name="Transferir" action="submit" onClick={ handleTransaction} />
+                  
                 </div>
               </div>
             </div>

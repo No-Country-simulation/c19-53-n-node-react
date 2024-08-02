@@ -1,46 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BottomBar from "../components/BottomBar";
 import NotificationsBell from "../assets/svg/NotificationsBell";
 import CheckedIcon from "../assets/svg/CheckedIcon";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import axios from "axios";
 
 import { Link } from "react-router-dom";
 
 const CheckIn = () => {
-  const Employees = [
-    {
-      id: 1,
-      name: "Clara Rodriguez",
-      document: "33.657.127",
-      position: "Puesto",
-      image: "/Employee1.jpg",
-      bank: "Banco1",
-      CBU: "1111111111111",
-    },
-    {
-      id: 2,
-      name: "Julia Alvarez",
-      document: "34.587.647",
-      position: "Puesto",
-      image: "/Employee2.jpg",
-      bank: "Banco2",
-      CBU: "222222222",
-    },
-    {
-      id: 3,
-      name: "Juan Perez",
-      document: "32.497.666",
-      position: "Puesto",
-      image: "/Employee3.jpg",
-      bank: "Banco3",
-      CBU: "333333333333",
-    },
-  ];
-  const employeeId = useParams();
-  const filteredEmployees = Employees.find(
-    (employee) => employee.id === parseInt(employeeId.id)
-  );
-  console.log(filteredEmployees);
+  const location = useLocation();
+  const { employee, monto, fecha} = location.state || {};
+  
+  if (!employee) {
+    return <p>Error al cargar los detalles del empleado</p>
+  };
+
+  const formattedDate = fecha ? new Date(fecha).toLocaleString() : "Fecha no disponible";
+ 
 
   return (
     <>
@@ -60,14 +36,14 @@ const CheckIn = () => {
                     <div className="flex flex-col font-thin text-sm justify-center items-center ">
                       <img
                         className="border w-16 h-16 rounded-full"
-                        src={filteredEmployees.image}
-                        alt=""
+                        src={employee.image || '/Employee1.jpg'}
+                        alt={employee.name}
                       />
-                      <p className="text-white">{filteredEmployees.name}</p>
-                      <p className="text-white">{filteredEmployees.bank}</p>
-                      <p className="text-white">{filteredEmployees.CBU}</p>
-                      <p>$10000</p>
-                      <p>Fecha: 27/07/2024 - 00:56</p>
+                      <p className="text-white">{employee.name}</p>
+                      <p className="text-white">{employee.bank}</p>
+                      <p className="text-white">{employee.CBU}</p>
+                      <p>{monto}</p>
+                      <p>Fecha:  {formattedDate} </p>
                     </div>
                     <div className=" flex justify-center items-center text-white font-thin gap-10">
                       <Link
