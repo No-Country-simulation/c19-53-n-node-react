@@ -21,7 +21,6 @@ const AddEmployee = () => {
       <div className="p-5">
         <form
           onSubmit={handleSubmit(async (data) => {
-            alert(data.toString());
             if (company?._id) {
               console.log(company._id);
               try {

@@ -9,6 +9,7 @@ const EditEmployee = () => {
   const { register, handleSubmit, setValue } = useForm();
   const { updateUser, getUserById } = useContext(TestContext);
   const param = useParams();
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     async function loadUser() {
@@ -23,6 +24,7 @@ const EditEmployee = () => {
         setValue("bankName", currentUser.data.bankName);
         setValue("bankAccountNumber", currentUser.data.bankAccountNumber);
         setValue("role", currentUser.data.role);
+        setUser(currentUser.data);
       }
     }
 
@@ -32,7 +34,11 @@ const EditEmployee = () => {
   return (
     <div className="bg-black h-full md:h-screen flex md:flex-row flex-col items-center justify-center gap-7 text  pb-20">
       <div className="flex flex-col justify-center items-center gap-3 pt-20 md:pt-0">
-        <img className="border w-56 h-56 rounded-full" src="" alt="" />
+        <img
+          className="border w-56 h-56 rounded-full"
+          src={user.profileImage}
+          alt=""
+        />
       </div>
       <div className="p-5">
         <form

@@ -59,7 +59,7 @@ const EmployeeProfile = () => {
                     <div className="flex  font-thin text-sm justify-center items-center gap-10">
                       <img
                         className="border w-32 h-25 rounded-full"
-                        src="/Face1.jpg" //CAMBIAR
+                        src={user.profileImage} //CAMBIAR
                         alt=""
                       />
                       <div className="flex flex-col gap-2">
