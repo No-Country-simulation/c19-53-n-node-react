@@ -55,6 +55,15 @@ export const TestProvider = ({ children }) => {
     }
   };
 
+  const updateCompany = async (updatedBalance) => {
+    try {
+      const response = await axios.put('/api/company/balance', { balance: updatedBalance });
+      setCompany(response.data);
+    } catch (error) {
+      console.error('Error updating company balance:', error);
+    }
+  };
+
   const logout = (navigate) => {
     setCompany(null);
 
@@ -102,7 +111,8 @@ export const TestProvider = ({ children }) => {
         updateUser,
         getEmployees,
         createEmployee,
-      fetchEmployees, }}
+      fetchEmployees, 
+      updateCompany,}}
     >
       {children}
     </TestContext.Provider>

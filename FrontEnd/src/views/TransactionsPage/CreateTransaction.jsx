@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 
 const CreateTransaction = () => {
   const {id } = useParams();
-  const { getEmployees, company } = useContext(TestContext)
+  const { getEmployees, company, updateCompany } = useContext(TestContext)
   const [ employee, setEmployee ] = useState(null)
   const [monto, setMonto] = useState('');
   const navigate = useNavigate();
@@ -38,7 +38,9 @@ const CreateTransaction = () => {
         { monto: parseFloat(monto) } // Asegúrate de enviar 'monto' como número
       );
       if (response.status === 201) {
+        const newBalance = company.balance - parseFloat(monto)
         navigate(`/checkin/${employee._id}`, { state: { employee, monto, fecha: new Date().toISOString() } });
+        updateCompany(newBalance)
       }
     } catch (error) {
       console.error('Error details:', error.response ? error.response.data : error.message);
@@ -68,12 +70,12 @@ const CreateTransaction = () => {
 
                     <img
                       className="border w-16 h-16 rounded-full"
-                      src={employee.image || '/Employee1.jpg'}
+                      src={employee.profileImage || '/Employee1.jpg'}
                       alt={employee.name}
                     />
                     <p className="text-white">{employee.name}</p>
-                    <p className="text-white">{employee.bank}</p>
-                    <p className="text-white">{employee.CBU}</p>
+                    <p className="text-white">{employee.bankName}</p>
+                    <p className="text-white">{employee.bankAccountNumber}</p>
                   </div>
 
                   <input

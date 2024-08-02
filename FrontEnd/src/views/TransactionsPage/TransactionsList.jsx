@@ -25,7 +25,6 @@ const TransactionsList = () => {
   }, [company?._id]);
 
   if (!Array.isArray(employees)) {
-    console.error('employees no es un array', employees);
     return null;
   }
 
@@ -91,7 +90,7 @@ const TransactionsList = () => {
                             className="flex items-center justify-between gap-3 w-full"
                           >
                             <img
-                              src={employee.image || "/Employee1.jpg"}
+                              src={employee.profileImage || "/Employee1.jpg"}
                               alt={employee.name}
                               className="border w-16 h-16 rounded-full"
                             />

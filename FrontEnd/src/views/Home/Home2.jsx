@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BottomBar from "../components/BottomBar";
 import NotificationsBell from "../assets/svg/NotificationsBell";
 import PaymentCardIcon from "../assets/svg/PaymentCardIcon";
@@ -10,44 +10,49 @@ import Logo2 from "../assets/svg/Logo2";
 import {TestContext, TestProvider} from '../../context/testContext'
 
 const Home2 = () => {
-  const {company, logout} = useContext(TestContext)
+  const {company,getEmployees, logout} = useContext(TestContext)
   const navigate = useNavigate();
+  const [formatedBalance, setFormatedBalance] = useState('')
+  const [ employees, setEmployees] = useState([]);
+  const [newBalance, setNewBalance] = useState('');
+
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const response = await getEmployees(company._id); // Suponiendo que usas `getEmployees`
+        const employeesArray = response.data; // Aquí accedes al array
+        setEmployees(employeesArray);
+      } catch (error) {
+        console.error("Error fetching employees:", error);
+      }
+    };
+  
+    fetchEmployees();
+  }, [company?._id]);
+
+  if (!Array.isArray(employees)) {
+    return null;
+  }
+
+  useEffect(() =>{
+    if(company && company.balance){
+      setFormatedBalance(company.balance.toLocaleString())
+    }
+  }, [company])
+
+  useEffect(() => {
+    if (company) {
+      setNewBalance(company.balance)
+    }
+  }, [company])
+
+
 
   const handleLogout = () => {
     logout(navigate);
   };
 
 
-  const Employees = [
-    {
-      id: 1,
-      name: "Clara Rodriguez",
-      document: "33.657.127",
-      position: "Puesto",
-      image: "/Employee1.jpg",
-      bank: "Banco1",
-      CBU: "1111111111111",
-    },
-
-    {
-      id: 2,
-      name: "Julia Alvarez",
-      document: "34.587.647",
-      position: "Puesto",
-      image: "/Employee2.jpg",
-      bank: "Banco2",
-      CBU: "222222222",
-    },
-    {
-      id: 3,
-      name: "Juan Perez",
-      document: "32.497.666",
-      position: "Puesto",
-      image: "/Employee3.jpg",
-      bank: "Banco3",
-      CBU: "333333333333",
-    },
-  ];
 
   const Tranfers = [
     {
@@ -118,8 +123,9 @@ const Home2 = () => {
                     <Logo2 width="80" height="80" color="white" />
                   </div>
                   <div className="text-center">
+                    <h1>{newBalance}</h1>
                     <h1 className="font-thin text-lg">Saldo Disponible</h1>
-                    <h2 className="font-semibold text-2xl">$ {company ? company.balance : 'Cargando...' }</h2>
+                    <h2 className="font-semibold text-2xl">$ {formatedBalance || 'Cargando...' }</h2>
                     {/* <h2 className="font-semibold text-2xl">{ company ? company.legalDocument : 'Cargando...'}</h2> */}
                     
 
@@ -204,20 +210,20 @@ const Home2 = () => {
                 </div>
                 <div className="p-2">
                   <ul className="flex flex-col gap-2">
-                    {Employees.map((employee) => (
-                      <li key={employee.id} className="border rounded-md p-2">
+                    {employees.map((employees) => (
+                      <li key={employees._id} className="border rounded-md p-2">
                         <div className="flex justify-center w-full">
                           <Link
-                            to={`/employeeprofile/${employee.id}`}
+                            to={`/employeeprofile/${employees._id}`}
                             className="flex items-center justify-between gap-3 w-full"
                           >
                             <img
-                              src={employee.image}
+                              src={employees.profileImage}
                               alt=""
                               className="border w-16 h-16 rounded-full"
                             />
                             <div className="text-center">
-                              <p>{employee.name}</p>
+                              <p>{employees.name}</p>
                             </div>
                           </Link>
                         </div>

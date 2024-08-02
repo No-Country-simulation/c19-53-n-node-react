@@ -36,13 +36,13 @@ const CheckIn = () => {
                     <div className="flex flex-col font-thin text-sm justify-center items-center ">
                       <img
                         className="border w-16 h-16 rounded-full"
-                        src={employee.image || '/Employee1.jpg'}
+                        src={employee.profileImage || '/Employee1.jpg'}
                         alt={employee.name}
                       />
                       <p className="text-white">{employee.name}</p>
-                      <p className="text-white">{employee.bank}</p>
-                      <p className="text-white">{employee.CBU}</p>
-                      <p>{monto}</p>
+                      <p className="text-white">{employee.bankName}</p>
+                      <p className="text-white">{employee.bankAccountNumber}</p>
+                      <p>${monto}</p>
                       <p>Fecha:  {formattedDate} </p>
                     </div>
                     <div className=" flex justify-center items-center text-white font-thin gap-10">
