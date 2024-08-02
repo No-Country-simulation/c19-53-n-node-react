@@ -7,7 +7,7 @@ import ProfileIcon from "../assets/svg/ProfileIcon";
 import ReturnIcon from "../assets/svg/ReturnIcon";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 import { useContext, useEffect, useState } from "react";
 import { TestContext } from "../../context/testContext";
 import { useParams } from "react-router-dom";
@@ -85,15 +85,21 @@ const EmployeeProfile = () => {
                             try {
                               const res = await deleteUser(param.id);
                               if (res.status === 200) {
-                                alert("Usuario eliminado exitosamente");
+                                Swal.fire({
+                                  title: "Usuario eliminado",
+                                  text: "El usuario ha sido eliminado con éxito",
+                                  icon: "success",
+                                });
                                 navigate("/employeelist");
                               }
                             } catch (error) {
-                              // const res = await getUsers();
-                              // setUsers(res.data);
-
                               console.error(error);
-                              alert("Error al eliminar usuario");
+                              Swal.fire({
+                                title: "Error al eliminar",
+                                text: "El usuario no ha sido eliminado",
+                                icon: "error",
+                              });
+                              navigate("/employeelist");
                             }
                           }}
                           className="font-thin flex flex-col justify-center items-center"
