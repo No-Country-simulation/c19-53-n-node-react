@@ -28,9 +28,9 @@ export default function Login() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col justify-between">
       <NavExample />
-      <div className="flex flex-col gap-5 p-5 lg:flex-row justify-center  lg:gap-20 mt-10">
+      <div className="flex flex-col gap-5 p-5 lg:flex-row justify-center md: mb-64 lg:gap-20 mt-10">
         {/* Banner */}
 
         <div className="flex flex-col gap-2 items-center">
