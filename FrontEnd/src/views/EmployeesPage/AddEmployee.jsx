@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import BottomBar from "../components/BottomBar";
 import { useContext, useEffect, useState } from "react";
 import { TestContext } from "../../context/testContext";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddEmployee = () => {
+  const navigate = useNavigate();
   const context = useContext(TestContext);
   if (!context) {
     throw new Error("useTestContext must be used within a TestProvider");
@@ -25,9 +28,19 @@ const AddEmployee = () => {
               console.log(company._id);
               try {
                 await createEmployee(company._id, data);
-                alert("Usuario creado con éxito");
+                Swal.fire({
+                  title: "Usuario creado",
+                  text: "El usuario ha sido creado con éxito",
+                  icon: "success",
+                });
+                navigate("/employeelist");
               } catch (error) {
-                alert("Error al crear el usuario");
+                Swal.fire({
+                  title: "Error",
+                  text: "Error al crear el usuario",
+                  icon: "error",
+                });
+                navigate("/employeelist");
               }
             } else {
               alert("No se ha seleccionado una empresa");

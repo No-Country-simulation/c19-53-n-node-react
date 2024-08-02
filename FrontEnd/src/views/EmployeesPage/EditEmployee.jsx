@@ -4,8 +4,11 @@ import BottomBar from "../components/BottomBar";
 import { useContext } from "react";
 import { TestContext } from "../../context/testContext";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const EditEmployee = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit, setValue } = useForm();
   const { updateUser, getUserById } = useContext(TestContext);
   const param = useParams();
@@ -45,9 +48,19 @@ const EditEmployee = () => {
           onSubmit={handleSubmit(async (data) => {
             try {
               await updateUser(param.id, data);
-              alert("Usuario actualizado");
+              Swal.fire({
+                title: "Usuario actualizado",
+                text: "El usuario ha sido actualizado con éxito",
+                icon: "success",
+              });
+              navigate("/employeelist");
             } catch (error) {
-              alert("Error al actualizar el usuario");
+              Swal.fire({
+                title: "Error",
+                text: "Error al actualizar el usuario",
+                icon: "error",
+              });
+              navigate("/employeelist");
             }
           })}
           className="  flex flex-col gap-3 items-center text-white  rounded-lg drop-shadow w-full sm:max-w-lg"
