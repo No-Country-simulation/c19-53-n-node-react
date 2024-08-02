@@ -1,40 +1,63 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BottomBar from "../components/BottomBar";
 import NotificationsBell from "../assets/svg/NotificationsBell";
 
 import TransferIcon from "../assets/svg/TransferIcon";
 import { Link } from "react-router-dom";
+import { TestContext } from "../../context/testContext";
 
 const TransactionsList = () => {
-  const Employees = [
-    {
-      id: 1,
-      name: "Clara Rodriguez",
-      document: "33.657.127",
-      position: "Puesto",
-      image: "/Employee1.jpg",
-      bank: "Banco1",
-      CBU: "1111111111111",
-    },
-    {
-      id: 2,
-      name: "Julia Alvarez",
-      document: "34.587.647",
-      position: "Puesto",
-      image: "/Employee2.jpg",
-      bank: "Banco2",
-      CBU: "222222222",
-    },
-    {
-      id: 3,
-      name: "Juan Perez",
-      document: "32.497.666",
-      position: "Puesto",
-      image: "/Employee3.jpg",
-      bank: "Banco3",
-      CBU: "333333333333",
-    },
-  ];
+  const { company, getEmployees } = useContext(TestContext);
+  const [ employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const response = await getEmployees(company._id); // Suponiendo que usas `getEmployees`
+        const employeesArray = response.data; // Aquí accedes al array
+        setEmployees(employeesArray);
+      } catch (error) {
+        console.error("Error fetching employees:", error);
+      }
+    };
+  
+    fetchEmployees();
+  }, [company?._id]);
+
+  if (!Array.isArray(employees)) {
+    console.error('employees no es un array', employees);
+    return null;
+  }
+
+  // const Employees = [
+  //   {
+  //     id: 1,
+  //     name: "Clara Rodriguez",
+  //     document: "33.657.127",
+  //     position: "Puesto",
+  //     image: "/Employee1.jpg",
+  //     bank: "Banco1",
+  //     CBU: "1111111111111",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Julia Alvarez",
+  //     document: "34.587.647",
+  //     position: "Puesto",
+  //     image: "/Employee2.jpg",
+  //     bank: "Banco2",
+  //     CBU: "222222222",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Juan Perez",
+  //     document: "32.497.666",
+  //     position: "Puesto",
+  //     image: "/Employee3.jpg",
+  //     bank: "Banco3",
+  //     CBU: "333333333333",
+  //   },
+  // ];
 
   return (
     <>
@@ -60,16 +83,16 @@ const TransactionsList = () => {
               <div className="p-2 rounded-md  w-full md:w-3/5">
                 <div className="p-2">
                   <ul className="flex flex-col gap-2">
-                    {Employees.map((employee) => (
-                      <li key={employee.id} className="border rounded-md p-2">
+                    {employees?.map((employee) => (
+                      <li key={employee._id} className="border rounded-md p-2">
                         <div className="flex justify-center w-full">
                           <Link
-                            to={`/createtransaction/${employee.id}`}
+                            to={`/createtransaction/${employee._id}`}
                             className="flex items-center justify-between gap-3 w-full"
                           >
                             <img
-                              src={employee.image}
-                              alt=""
+                              src={employee.image || "/Employee1.jpg"}
+                              alt={employee.name}
                               className="border w-16 h-16 rounded-full"
                             />
                             <div className="text-center">

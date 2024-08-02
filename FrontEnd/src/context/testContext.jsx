@@ -78,11 +78,22 @@ export const TestProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
+  
+  const fetchEmployees = async () => {
+    try {
+      const response = await getEmployees(company._id);
+      return response.data || []
+    } catch (error) {
+      console.error("Error fetching employees:", error);
+      return [] ;
+    }
+  };
+
   return (
     <TestContext.Provider
 
       value={{ isAuthenticated, company, loading, login, logout, getUsers, registerRequest, deleteUser, getUserById, updateUser,  getEmployees,
-        createEmployee, }}
+        createEmployee, fetchEmployees, }}
 
     >
       {children}
